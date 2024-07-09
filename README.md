@@ -1,8 +1,8 @@
-# weLoot
+# Trella
 
 ## Version: 1.0.0
 
-weLoot est une application web de paris e-sport.
+Trella est une application web comme trello mais en mieux.
 
 ---
 
@@ -17,7 +17,7 @@ weLoot est une application web de paris e-sport.
 
 ### Installation
 
-Pour installer weLoot, suivez ces étapes :
+Pour installer Trella, suivez ces étapes :
 
 1. Clonez ce dépôt sur votre machine locale.
 2. Accédez au répertoire cloné.
@@ -31,7 +31,7 @@ Pour installer weLoot, suivez ces étapes :
 
 ### Installation de la base de données
 
-Pour installer et configurer la base de données pour weLoot, suivez ces étapes :
+Pour installer et configurer la base de données pour Trella, suivez ces étapes :
 
 *Prérequis : Docker desktop doit être installé sur votre machine.*
 
@@ -42,13 +42,13 @@ Pour installer et configurer la base de données pour weLoot, suivez ces étapes
     ```
 
 2. Configurer la connexion à la base de données :
-    - Name : `weloot_db@localhost`
+    - Name : `Trella_db@localhost`
     - Host : `localhost`
     - Port : `3306`
     - User : `admin`
     - Password : `admin`
-    - Database : `weloot_db`
-    - URL : `jdbc:mysql://localhost:3306/weloot_db`
+    - Database : `Trella_db`
+    - URL : `jdbc:mysql://localhost:3306/Trella_db`
 
 ---
 
