@@ -1,0 +1,51 @@
+# dependencies
+node_modules/
+/backend/node_modules
+/frontend/node_modules
+/frontend/.pnp
+/frontend/.pnp.js
+
+# testing
+/frontend/coverage
+/backend/coverage
+
+# production
+/frontend/build
+/backend/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+/frontend/.DS_Store
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+# Ignore les fichiers d'installation et les dépendances spécifiques à votre système d'exploitation
+package-lock.json
+**/package-lock.json
+
+# Ignore les fichiers de cache
+.cache/
+
+# Ignore les fichiers de sauvegarde temporaires
+*.tmp
+
+# Ignore les fichiers de configuration utilisateur
+.idea/
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# Ignore les fichiers de sauvegarde
+*.bak

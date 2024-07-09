@@ -1,0 +1,50 @@
+@keyframes colorFade {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes appearFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideNotification {
+
+    0%,
+    100% {
+        top: -50px;
+        opacity: 0.5;
+    }
+
+    10% {
+        top: 68px;
+        opacity: 1;
+    }
+
+    70% {
+        top: 68px;
+        opacity: 1;
+    }
+}

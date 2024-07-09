@@ -1,0 +1,1 @@
+drop procedure if exists update_team_win_rate;

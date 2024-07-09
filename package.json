@@ -1,0 +1,32 @@
+{
+  "name": "weloot",
+  "version": "1.0.0",
+  "description": "Application web de paris e-sport",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/Server.js",
+    "client": "cd frontend && npm start",
+    "server": "node start-server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "cd frontend && npm install && cd ../backend && npm install",
+    "database": "node start-server.js"
+  },
+  "author": "ESCLAPEZ Loïc, DIMECK Raphaël, SALAÜN Kerrian, VIDAL Odilon",
+  "license": "Non spécifiée",
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.14",
+    "@mui/system": "^5.15.15",
+    "@types/nodemailer": "^6.4.15",
+    "concurrently": "^7.0.0",
+    "cors": "^2.8.5",
+    "country-flag-emoji": "^1.0.3",
+    "express-session": "^1.18.0",
+    "moment-timezone": "^0.5.45",
+    "react-international-phone": "^4.2.9",
+    "react-router": "^6.22.3",
+    "react-router-dom": "^6.22.3"
+  }
+}

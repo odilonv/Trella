@@ -1,0 +1,9 @@
+.colorFade {
+    background: repeating-linear-gradient(to right, rgb(219, 219, 219) 0%, rgb(255, 255, 255) 50%, rgb(211, 211, 211) 100%);
+    width: 100%;
+    background-size: 200% auto;
+    background-position: 0 100%;
+    animation: colorFade 1s infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
