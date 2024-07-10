@@ -60,7 +60,7 @@ function Header() {
         navigate('/matches', { state: { showRunningMatches: false } });
     };
 
-    const handleWeLootClick = () => {
+    const handletrellaClick = () => {
         navigate('/');
     };
 
@@ -81,7 +81,7 @@ function Header() {
                 </a>
             </div>
             <nav className='app-header'>
-                <span onClick={handleWeLootClick} id='logo-header'>weLoot</span>
+                <span onClick={handletrellaClick} id='logo-header'>trella</span>
                 <div>
                     <div className="header-link-container">
                         <span className="header-link" onClick={handleEsportClick}>Esport</span>
@@ -114,7 +114,7 @@ function Header() {
                                 <ButtonComponent text={user.firstName} color='#000000' href='/user'
                                     endIcon={<PersonRoundedIcon htmlColor='white' />} />
                             </>
-                        ) : (   
+                        ) : (
                             <>
                                 <ButtonComponent text="Connexion" textColor='var(--white)' color='var(--black)'
                                     href='/login' />

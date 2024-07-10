@@ -35,7 +35,7 @@ const startServer = async () => {
     const serverProcess = spawnProcess('node', ['backend/Server.js']);
 
     console.log('Récupération de l\'ID du conteneur MySQL...');
-    const containerId = await execCommand('docker ps -q -f name=weloot-db-1');
+    const containerId = await execCommand('docker ps -q -f name=trella-db-1');
     if (!containerId) {
       throw new Error('Le conteneur MySQL n\'a pas été trouvé');
     }

@@ -31,7 +31,7 @@ function LargeFooterComponent() {
                 color: 'rgba(254, 251, 236, 0.7)'
             }}>
                 <div>
-                    <a href="/" style={{ color: 'white', fontSize: '2.5em', fontWeight: '600' }}>weLoot</a>
+                    <a href="/" style={{ color: 'white', fontSize: '2.5em', fontWeight: '600' }}>trella</a>
                     <p style={{ marginTop: '1%', color: 'white' }}>Ton application de paris e-sportif !</p>
                 </div>
                 <div className='footer-column'>

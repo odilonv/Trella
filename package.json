@@ -1,7 +1,7 @@
 {
-  "name": "weloot",
+  "name": "trella",
   "version": "1.0.0",
-  "description": "Application web de paris e-sport",
+  "description": "Application web de ",
   "main": "server.js",
   "scripts": {
     "start": "node backend/Server.js",

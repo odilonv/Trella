@@ -316,7 +316,7 @@ function SignUpPage() {
                                 </div>
                                 <div style={{ marginTop: '8px', marginBottom: '16px' }}>
                                     <RadioButtonComponent
-                                        label="J'accepte de recevoir les offres spéciales et informations de la part de WeLoot"
+                                        label="J'accepte de recevoir les offres spéciales et informations de la part de trella"
                                         checked={user.receiveOffers}
                                         onChange={handleReceiveOffersChange}
                                     />

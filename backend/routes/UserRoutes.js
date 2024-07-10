@@ -4,7 +4,6 @@ import crypto from 'crypto';
 import UserSession from "../UserSession.js";
 import nodemailer from 'nodemailer';
 import moment from 'moment-timezone';
-import Bet from "../models/Bet.js";
 import { checkAge, checkIsEmail, checkIsPhoneNumber, checkOnlyAlphabets, checkPassword } from "../services/utils/ValidateUtils.js";
 import Country from '../models/Country.js';
 
@@ -14,21 +13,21 @@ const transporter = nodemailer.createTransport({
     port: 465,
     secure: true,
     auth: {
-        user: 'weloot000@gmail.com',
+        user: 'trella000@gmail.com',
         pass: 'rknb nlmb xybp pbcx'
     }
 });
 
 const sendConfirmationEmail = async (userEmail, token, firstname, lastname) => {
     const mailOptions = {
-        from: '"WeLoot" <weloot000@gmail.com>',
+        from: '"trella" <trella000@gmail.com>',
         to: userEmail,
         subject: 'Confirmation de votre adresse email',
         html:
             `
                 <div>
                     <h1> Bienvenue ${firstname} ${lastname} </h1>
-                    <p style={{ marginTop: '50px' }}> Merci de vous être inscris chez Weloot. </p>
+                    <p style={{ marginTop: '50px' }}> Merci de vous être inscris chez trella. </p>
                     <p> Cliquez sur le bouton ci-dessous pour confirmer votre adresse email : </p>
                     <div style="margin-top: 50px;">
                         <a style="display: inline-block; background-color: #7161EC; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;"
@@ -36,7 +35,7 @@ const sendConfirmationEmail = async (userEmail, token, firstname, lastname) => {
                     </div>
                     <div style="margin-top: 50px;">
                         <p> Bonne journée, </p>
-                        <h2> weLoot </h2>
+                        <h2> trella </h2>
                     </div> 
                 </div>
             `
@@ -110,7 +109,7 @@ router.post('/api/data/session/forgotPassword', async (req, res) => {
         await User.updatePasswordResetToken(user.id, token, tokenExpirationDate);
         const resetLink = `http://localhost:3000/changePassword?token=${token}`;
         const mailOptions = {
-            from: 'weloot000@gmail.com',
+            from: 'trella000@gmail.com',
             to: email,
             subject: 'Réinitialisation du mot de passe',
             html:
@@ -125,7 +124,7 @@ router.post('/api/data/session/forgotPassword', async (req, res) => {
                 </div>
                 <div style="margin-top: 50px;">
                     <p> Bonne journée, </p>
-                    <h2> weLoot </h2>
+                    <h2> trella </h2>
                 </div> 
             </div>
             `,
@@ -289,15 +288,6 @@ router.get('/api/data/session', async (req, res) => {
         const finishedBets = await Bet.checkForFinishedBets(req.session.user.id);
         req.session.user.finishedBets = finishedBets.length > 0 ? finishedBets : req.session.user.finishedBets;
         res.status(200).send({ message: 'Session is active', user: req.session.user, finishedBets: finishedBets });
-    } else {
-        res.status(202).send({ message: 'No active session', user: false });
-    }
-});
-
-router.delete('/api/data/session/bets', async (req, res) => {
-    if (UserSession.isActive(req)) {
-        req.session.user.finishedBets = undefined;
-        res.status(200).send({ message: 'Bets cleared', user: req.session.user });
     } else {
         res.status(202).send({ message: 'No active session', user: false });
     }

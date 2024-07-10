@@ -99,7 +99,7 @@ function HomePage() {
                             titleText={<span>Choisis ton jeu, ton équipe et <strong
                                 style={{ color: 'var(--main-purple)' }}>paris</strong> !</span>}
                             firstSubText={"Tu veux suivre un jeu en particulier ?"}
-                            secondSubText={"Fais ton propre choix et lance toi dans l'aventure weLoot."} />}
+                            secondSubText={"Fais ton propre choix et lance toi dans l'aventure trella."} />}
                 </div>
             </section>
             <section>

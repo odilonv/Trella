@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
-import {BetRoutes, HomeRoutes, MatchRoutes, TeamRoutes, UserRoutes, CountryRoutes} from './routes/Index.js';
+import {HomeRoutes, UserRoutes, CountryRoutes} from './routes/Index.js';
 
 const app = express();
 const PORT = 5000;
@@ -23,9 +23,6 @@ const router = express.Router();
 
 app.use(HomeRoutes);
 app.use(UserRoutes);
-app.use(MatchRoutes);
-app.use(TeamRoutes);
-app.use(BetRoutes);
 app.use(CountryRoutes);
 
 app.listen(PORT, () => {
