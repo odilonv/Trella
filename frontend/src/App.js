@@ -1,5 +1,4 @@
 import React from 'react';
-import './assets/css/App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { FooterComponent, HeaderComponent } from './components';
 import {
@@ -12,22 +11,19 @@ import {
   SignUpPage,
   UserPage,
   VerifyEmailPage,
-  AboutPage,
   TermsOfUsePage
 } from './pages';
-import { CartProvider, NotificationProvider, UserProvider } from './contexts';
+import { NotificationProvider, UserProvider } from './contexts';
 
 function App() {
   return (
     <Router>
       <UserProvider>
         <HeaderComponent />
-        <CartProvider>
           <NotificationProvider>
             <Routes>
               <Route exact path="/" element={<HomePage />} />
               <Route path="/home" element={<HomePage />} />
-              <Route path="/a-propos" element={<AboutPage />} />
               <Route path="/conditions" element={<TermsOfUsePage />} />
               <Route path="/logout" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
@@ -40,7 +36,6 @@ function App() {
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </NotificationProvider>
-        </CartProvider>
         <FooterComponent />
       </UserProvider>
     </Router>

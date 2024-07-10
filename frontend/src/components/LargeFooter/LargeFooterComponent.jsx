@@ -1,5 +1,4 @@
 import React from 'react';
-import moon from '../../assets/images/globe.png'
 
 function LargeFooterComponent() {
     return (
@@ -12,10 +11,6 @@ function LargeFooterComponent() {
                 height: '20%',
                 border: '1px 0 0 1px solid #2F3034'
             }}></div>
-            <img src={moon} alt="Moon" style={{
-                position: 'relative',
-                height: '50vh'
-            }} />
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: '2fr 1fr 1fr',
