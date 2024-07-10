@@ -17,7 +17,7 @@ Trella is a microservice architecture application designed to function similarly
 
 ### Architecture
 
-![Trella Architecture](Trella Architecture Diagram.txt)
+![Trella Architecture](docs/Trella%20Architecture%20Diagram.svg)
 
 ---
 
