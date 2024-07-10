@@ -1,0 +1,30 @@
+<mxfile host="app.diagrams.net" modified="2024-07-10T13:12:45.072Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" version="24.6.4" etag="NuFFoBvGLnP2rY1lWFLy" type="github">
+  <diagram name="Page-1" id="-vT_Bjmg6V-tcik7j1_8">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Trello Microservices Architecture" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry width="365" height="144" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="React" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="2">
+          <mxGeometry x="58" y="63" width="55" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="User Interface" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="2">
+          <mxGeometry x="33" y="28" width="105" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Node Express" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="2">
+          <mxGeometry x="213" y="63" width="110" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Server" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="2">
+          <mxGeometry x="188" y="28" width="160" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="" style="curved=1;startArrow=none;endArrow=block;exitX=1.01;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="2" source="3" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
