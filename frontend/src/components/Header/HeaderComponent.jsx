@@ -27,14 +27,8 @@ function Header() {
 
     return (
         <header>
-            <div className="header-wrapper">
-                <a rel="noopener noreferrer" href="http://www.joueurs-info-service.fr/" target="_blank">
-                    <img data-qa="frAnjBanner" alt="anj"
-                        src="https://dam.begmedia.com/front/banners/arjel-banner2.jpg" />
-                </a>
-            </div>
             <nav className='app-header'>
-                <span onClick={handleWeLootClick} id='logo-header'>weLoot</span>
+                <span onClick={handleWeLootClick} id='logo-header'>trella</span>
                 <div>
                     <div className="header-link-container">
                         <span className="header-link" onClick={handleEsportClick}>Esport</span>

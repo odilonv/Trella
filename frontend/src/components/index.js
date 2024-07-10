@@ -13,6 +13,9 @@ export { default as PopupPasswordComponent } from './PopupPassword/PopupPassword
 export { default as SelectComponent } from './Select/SelectComponent';
 export { default as ModalComponent } from './Modal/ModalComponent';
 export { default as PasswordCreationComponent } from './Input/PasswordCreationComponent';
+export { default as UserInfoComponent } from './UserInfo/UserInfoComponent';
+export { default as UserInfoEntryComponent } from './UserInfo/UserInfoEntryComponent';
+
 
 
 
