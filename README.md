@@ -2,11 +2,11 @@
 
 ## Version: 1.0.0
 
-trella est une application web comme trello mais en mieux.
+Trella is a microservice architecture application designed to function similarly to Trello. It offers project management capabilities where users can create boards, lists, and cards to organize tasks and workflows efficiently.
 
 ---
 
-### Auteurs
+### Authors
 
 - ESCLAPEZ Loïc
 - DIMECK Raphaël
@@ -17,11 +17,11 @@ trella est une application web comme trello mais en mieux.
 
 ### Installation
 
-Pour installer trella, suivez ces étapes :
+To install Trella, follow these steps:
 
-1. Clonez ce dépôt sur votre machine locale.
-2. Accédez au répertoire cloné.
-3. Exécutez la commande suivante pour installer les dépendances du frontend et du backend :
+1. Clone this repository to your local machine.
+2. Navigate to the cloned directory.
+3. Run the following command to install the frontend and backend dependencies:
 
     ```
     npm install
@@ -31,18 +31,16 @@ Pour installer trella, suivez ces étapes :
 
 ### Installation de la base de données
 
-Pour installer et configurer la base de données pour trella, suivez ces étapes :
+To install and configure the database for Trella, follow these steps:
 
-*Prérequis : Docker desktop doit être installé sur votre machine.*
-
-1. Lancer les conteneurs Docker :
+1. Start the Docker containers:
 
     ```
     npm run database
     ```
 
-2. Configurer la connexion à la base de données :
-    - Name : `trella_db@localhost`
+2. Configure the database connection:
+    - Name : `Trella_db@localhost`
     - Host : `localhost`
     - Port : `3306`
     - User : `admin`
@@ -52,32 +50,27 @@ Pour installer et configurer la base de données pour trella, suivez ces étapes
 
 ---
 
-### Utilisation
-
-Pour lancer l'application en mode développement, exécutez la commande suivante :
+### Usage
+To run the application in development mode, execute the following command:
 
     npm run dev
 
-Cela lancera le serveur backend et démarrera le frontend.
+This will start the backend server and launch the frontend.
 
 ---
 
-### Scripts disponibles
+### Available Scripts
 
-- `npm start`: Lance le serveur backend.
-- `npm run client`: Démarre le frontend.
-- `npm run server`: Lance le serveur backend.
-- `npm run dev`: Démarre à la fois le serveur backend et le frontend en mode développement.
-- `npm test`: Exécute les tests. *(Actuellement non spécifié)*
+- `npm run client`: Starts the frontend.
+- `npm run server`: Starts the backend server.
+- `npm run dev`:  Starts both the backend server and the frontend in development mode.
+- `npm test`:  Runs the tests. (Currently unspecified)
 
 ---
 
 ### Licence
 
-*(Actuellement non spécifié)*
+This project is licensed under the MIT License.
 
 ---
-
-N'hésitez pas à contribuer ou à signaler des problèmes en créant une issue.
-
 
