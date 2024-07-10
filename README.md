@@ -1,4 +1,4 @@
-# trella
+# Trella
 
 ## Version: 1.0.0
 
@@ -12,6 +12,12 @@ Trella is a microservice architecture application designed to function similarly
 - DIMECK Raphaël
 - SALAÜN Kerrian
 - VIDAL Odilon
+
+---
+
+### Architecture
+
+![Trella Architecture](Trella Architecture Diagram.txt)
 
 ---
 
@@ -45,8 +51,8 @@ To install and configure the database for Trella, follow these steps:
     - Port : `3306`
     - User : `admin`
     - Password : `admin`
-    - Database : `trella_db`
-    - URL : `jdbc:mysql://localhost:3306/trella_db`
+    - Database : `Trella_db`
+    - URL : `jdbc:mysql://localhost:3306/Trella_db`
 
 ---
 
