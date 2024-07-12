@@ -65,16 +65,6 @@ class DatabaseConnection {
         console.log("- Tables dropped");
     }
 
-    static async dropStoredProcedures(connection) {
-        const dropStoredProcedures = fs.readFileSync('backend/assets/dropStoredProcedures.sql', 'utf-8');
-        for (let query of dropStoredProcedures.split(';')) {
-            if (query.trim() !== '') {
-                await connection.query(query);
-            }
-        }
-        console.log("- Stored procedures dropped");
-    }
-
     static async createTables(connection) {
         const creationTables = fs.readFileSync('backend/assets/createTables.sql', 'utf-8');
         for (let query of creationTables.split(';')) {
@@ -88,46 +78,6 @@ class DatabaseConnection {
             "VALUES (0, 'monsieur', 'admin', 'admin', '2003-01-01', 'France', 'Montpellier', 'admin@admin.com', '', true, '0600000000', '65 rue de trella','test', 'test','" + await User.hashPassword("admin") + "', true, 10000)";
         connection.query(sql);
         console.log("- Admin user created");
-    }
-
-    static async createIndexes(connection) {
-        const creationIndexes = fs.readFileSync('backend/assets/createIndexes.sql', 'utf-8');
-        for (let query of creationIndexes.split(';')) {
-            if (query.trim() !== '') {
-                await connection.query(query);
-            }
-        }
-        console.log("- Indexes created");
-    }
-
-    static async insertCountries(connection) {
-        const countries = fs.readFileSync('backend/assets/insertCountries.sql', 'utf-8');
-        for (let query of countries.split(';')) {
-            if (query.trim() !== '') {
-                await connection.query(query);
-            }
-        }
-        console.log("- Countries inserted");
-    }
-
-    static async createStoredProcedures(connection) {
-        const storedProcedures = fs.readFileSync('backend/assets/createStoredProcedures.sql', 'utf-8');
-        for (let query of storedProcedures.split('DELIMITER / /')) {
-            if (query.trim() !== '') {
-                await connection.query(query);
-            }
-        }
-        console.log("- Stored procedures created");
-    }
-
-    static async createTriggers(connection) {
-        const triggers = fs.readFileSync('backend/assets/createTriggers.sql', 'utf-8');
-        for (let query of triggers.split('DELIMITER / /')) {
-            if (query.trim() !== '') {
-                await connection.query(query);
-            }
-        }
-        console.log("- Triggers created");
     }
 }
 

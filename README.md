@@ -48,11 +48,11 @@ To install and configure the database for Trella, follow these steps:
 2. Configure the database connection:
     - Name : `Trella_db@localhost`
     - Host : `localhost`
-    - Port : `3306`
+    - Port : `3307`
     - User : `admin`
     - Password : `admin`
     - Database : `Trella_db`
-    - URL : `jdbc:mysql://localhost:3306/Trella_db`
+    - URL : `jdbc:mysql://localhost:3307/Trella_db`
 
 ---
 

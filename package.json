@@ -23,6 +23,7 @@
     "concurrently": "^7.0.0",
     "cors": "^2.8.5",
     "country-flag-emoji": "^1.0.3",
+    "express": "^4.19.2",
     "express-session": "^1.18.0",
     "moment-timezone": "^0.5.45",
     "react-international-phone": "^4.2.9",

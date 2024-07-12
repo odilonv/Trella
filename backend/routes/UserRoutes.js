@@ -5,7 +5,6 @@ import UserSession from "../UserSession.js";
 import nodemailer from 'nodemailer';
 import moment from 'moment-timezone';
 import { checkAge, checkIsEmail, checkIsPhoneNumber, checkOnlyAlphabets, checkPassword } from "../services/utils/ValidateUtils.js";
-import Country from '../models/Country.js';
 
 const router = express.Router();
 const transporter = nodemailer.createTransport({

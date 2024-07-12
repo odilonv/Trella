@@ -8,7 +8,7 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
     ports:
-      - "3306:3306"
+      - "3307:3307"
     volumes:
       - db_data:/var/lib/mysql
       

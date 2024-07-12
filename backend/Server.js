@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
-import {HomeRoutes, UserRoutes, CountryRoutes} from './routes/Index.js';
+import {HomeRoutes, UserRoutes} from './routes/Index.js';
 
 const app = express();
 const PORT = 5000;
@@ -23,7 +23,6 @@ const router = express.Router();
 
 app.use(HomeRoutes);
 app.use(UserRoutes);
-app.use(CountryRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
