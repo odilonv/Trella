@@ -1,11 +1,10 @@
-import { Router } from 'express';
-import { getAllCards, getCardById, createCard, updateCard } from './cardController.js';
+// backend/services/cards/cardRoutes.js
+import express from 'express';
+import { createCard, getCardById, updateCard } from './cardController.js';
 
-const router = Router();
+export const cardRouter = express.Router();
 
-router.get('/', getAllCards);
-router.get('/:cardId', getCardById);
-router.post('/', createCard);
-router.put('/:cardId', updateCard);
-
-export default router;
+// Routes pour les cards
+cardRouter.post('/', createCard);
+cardRouter.get('/:cardId', getCardById);
+cardRouter.put('/:cardId', updateCard);

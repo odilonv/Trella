@@ -1,58 +1,33 @@
-import { getUsers, getUser, updateUserDetails, createUser, authenticateUser, sendPasswordResetLink, verifyEmail } from './userService.js';
+// backend/services/users/userController.js
+import { v4 as uuidv4 } from 'uuid';
+import { UserService } from './userService.js';
 
-export const getAllUsers = (req, res) => {
-    const users = getUsers();
-    res.status(200).json(users);
-};
-
-export const getUserById = (req, res) => {
-    const { userId } = req.params;
-    const user = getUser(userId);
-    if (user) {
-        res.status(200).json(user);
-    } else {
-        res.status(404).send('User not found');
-    }
-};
-
-export const updateUser = (req, res) => {
-    const { userId } = req.params;
-    const updatedUser = updateUserDetails(userId, req.body);
-    if (updatedUser) {
-        res.status(200).json(updatedUser);
-    } else {
-        res.status(404).send('User not found');
-    }
-};
-
-export const signup = (req, res) => {
-    const newUser = createUser(req.body);
+// Créer un utilisateur
+export const createUser = (req, res) => {
+    const { username, email, password } = req.body;
+    const newUser = UserService.createUser(username, email, password);
     res.status(201).json(newUser);
 };
 
-export const login = (req, res) => {
-    const token = authenticateUser(req.body);
-    if (token) {
-        res.status(200).json({ token });
+// Obtenir un utilisateur par ID
+export const getUserById = (req, res) => {
+    const { userId } = req.params;
+    const user = UserService.getUserById(userId);
+    if (user) {
+        res.json(user);
     } else {
-        res.status(401).send('Unauthorized');
+        res.status(404).json({ message: 'User not found' });
     }
 };
 
-export const forgotPassword = (req, res) => {
-    const result = sendPasswordResetLink(req.body.email);
-    if (result) {
-        res.status(200).send('Password reset link sent successfully');
+// Mettre à jour les détails d'un utilisateur
+export const updateUser = (req, res) => {
+    const { userId } = req.params;
+    const { username, email } = req.body;
+    const updatedUser = UserService.updateUser(userId, username, email);
+    if (updatedUser) {
+        res.json(updatedUser);
     } else {
-        res.status(404).send('User not found');
-    }
-};
-
-export const validateEmail = (req, res) => {
-    const result = verifyEmail(req.body.email);
-    if (result) {
-        res.status(200).send('Email validated successfully');
-    } else {
-        res.status(404).send('User not found');
+        res.status(404).json({ message: 'User not found' });
     }
 };

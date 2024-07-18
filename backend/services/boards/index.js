@@ -1,11 +1,18 @@
+// backend/services/boards/index.js
 import express from 'express';
-import boardRoutes from './boardRoutes.js';
+import { boardRouter } from './boardRoutes.js';
 
 const app = express();
-app.use(express.json());
-app.use('/boards', boardRoutes);
+const PORT = 5002; // Port pour le service boards
 
-const PORT = process.env.PORT || 3002;
-app.listen(PORT, () => {
-    console.log(`Board service running on port ${PORT}`);
-});
+app.use(express.json());
+
+// Montage des routes du service boards
+app.use('/boards', boardRouter);
+
+// Point d'entrée pour le service boards
+export const startBoardsService = () => {
+    app.listen(PORT, () => {
+        console.log(`Boards service is running on port ${PORT}`);
+    });
+};

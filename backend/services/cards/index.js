@@ -1,11 +1,18 @@
+// backend/services/cards/index.js
 import express from 'express';
-import cardRoutes from './cardRoutes.js';
+import { cardRouter } from './cardRoutes.js';
 
 const app = express();
-app.use(express.json());
-app.use('/cards', cardRoutes);
+const PORT = 5003; // Port pour le service cards
 
-const PORT = process.env.PORT || 3003;
-app.listen(PORT, () => {
-    console.log(`Card service running on port ${PORT}`);
-});
+app.use(express.json());
+
+// Montage des routes du service cards
+app.use('/cards', cardRouter);
+
+// Point d'entrée pour le service cards
+export const startCardsService = () => {
+    app.listen(PORT, () => {
+        console.log(`Cards service is running on port ${PORT}`);
+    });
+};

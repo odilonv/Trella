@@ -1,31 +1,33 @@
-import { getCards, getCard, addCard, updateCardDetails } from './cardService.js';
+// backend/services/cards/cardController.js
+import { v4 as uuidv4 } from 'uuid';
+import { CardService } from './cardService.js';
 
-export const getAllCards = (req, res) => {
-    const cards = getCards();
-    res.status(200).json(cards);
-};
-
-export const getCardById = (req, res) => {
-    const { cardId } = req.params;
-    const card = getCard(cardId);
-    if (card) {
-        res.status(200).json(card);
-    } else {
-        res.status(404).send('Card not found');
-    }
-};
-
+// Créer une card
 export const createCard = (req, res) => {
-    const newCard = addCard(req.body);
+    const { title, description } = req.body;
+    const newCard = CardService.createCard(title, description);
     res.status(201).json(newCard);
 };
 
+// Obtenir une card par ID
+export const getCardById = (req, res) => {
+    const { cardId } = req.params;
+    const card = CardService.getCardById(cardId);
+    if (card) {
+        res.json(card);
+    } else {
+        res.status(404).json({ message: 'Card not found' });
+    }
+};
+
+// Mettre à jour les détails d'une card
 export const updateCard = (req, res) => {
     const { cardId } = req.params;
-    const updatedCard = updateCardDetails(cardId, req.body);
+    const { title, description } = req.body;
+    const updatedCard = CardService.updateCard(cardId, title, description);
     if (updatedCard) {
-        res.status(200).json(updatedCard);
+        res.json(updatedCard);
     } else {
-        res.status(404).send('Card not found');
+        res.status(404).json({ message: 'Card not found' });
     }
 };

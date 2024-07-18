@@ -1,24 +1,34 @@
-const cards = [];
+// backend/services/cards/cardService.js
+import { v4 as uuidv4 } from 'uuid';
 
-export const getCards = () => {
-    return cards;
-};
+// Exemple de stockage temporaire en mémoire
+let cards = [];
 
-export const getCard = (id) => {
-    return cards.find(card => card.id === id);
-};
+export const CardService = {
+    // Créer une card
+    createCard: (title, description) => {
+        const newCard = {
+            id: uuidv4(),
+            title,
+            description
+        };
+        cards.push(newCard);
+        return newCard;
+    },
 
-export const addCard = (cardData) => {
-    const newCard = { id: `${cards.length + 1}`, ...cardData };
-    cards.push(newCard);
-    return newCard;
-};
+    // Obtenir une card par ID
+    getCardById: (cardId) => {
+        return cards.find(card => card.id === cardId);
+    },
 
-export const updateCardDetails = (id, cardDetails) => {
-    const cardIndex = cards.findIndex(card => card.id === id);
-    if (cardIndex !== -1) {
-        cards[cardIndex] = { ...cards[cardIndex], ...cardDetails };
-        return cards[cardIndex];
+    // Mettre à jour les détails d'une card
+    updateCard: (cardId, title, description) => {
+        const cardIndex = cards.findIndex(card => card.id === cardId);
+        if (cardIndex !== -1) {
+            cards[cardIndex].title = title;
+            cards[cardIndex].description = description;
+            return cards[cardIndex];
+        }
+        return null;
     }
-    return null;
 };

@@ -1,39 +1,35 @@
-const users = [];
+// backend/services/users/userService.js
+import { v4 as uuidv4 } from 'uuid';
 
-export const getUsers = () => {
-    return users;
-};
+// Exemple de stockage temporaire en mémoire
+let users = [];
 
-export const getUser = (id) => {
-    return users.find(user => user.id === id);
-};
+export const UserService = {
+    // Créer un utilisateur
+    createUser: (username, email, password) => {
+        const newUser = {
+            id: uuidv4(),
+            username,
+            email,
+            password // Note: Vous devriez hasher ce mot de passe avant de l'enregistrer
+        };
+        users.push(newUser);
+        return newUser;
+    },
 
-export const updateUserDetails = (id, userDetails) => {
-    const userIndex = users.findIndex(user => user.id === id);
-    if (userIndex !== -1) {
-        users[userIndex] = { ...users[userIndex], ...userDetails };
-        return users[userIndex];
+    // Obtenir un utilisateur par ID
+    getUserById: (userId) => {
+        return users.find(user => user.id === userId);
+    },
+
+    // Mettre à jour les détails d'un utilisateur
+    updateUser: (userId, username, email) => {
+        const userIndex = users.findIndex(user => user.id === userId);
+        if (userIndex !== -1) {
+            users[userIndex].username = username;
+            users[userIndex].email = email;
+            return users[userIndex];
+        }
+        return null;
     }
-    return null;
-};
-
-export const createUser = (userData) => {
-    const newUser = { id: `${users.length + 1}`, ...userData };
-    users.push(newUser);
-    return newUser;
-};
-
-export const authenticateUser = ({ email, password }) => {
-    const user = users.find(user => user.email === email && user.password === password);
-    return user ? 'fake-jwt-token' : null;
-};
-
-export const sendPasswordResetLink = (email) => {
-    const user = users.find(user => user.email === email);
-    return user ? true : false;
-};
-
-export const verifyEmail = (email) => {
-    const user = users.find(user => user.email === email);
-    return user ? true : false;
 };

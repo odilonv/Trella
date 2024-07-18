@@ -1,24 +1,35 @@
-const boards = [];
+// backend/services/boards/boardService.js
+import { v4 as uuidv4 } from 'uuid';
 
-export const getBoards = () => {
-    return boards;
-};
+// Exemple de stockage temporaire en mémoire
+let boards = [];
 
-export const getBoard = (id) => {
-    return boards.find(board => board.id === id);
-};
+export const BoardService = {
+    // Créer un board
+    createBoard: (name, description) => {
+        const newBoard = {
+            id: uuidv4(),
+            name,
+            description
+        };
+        boards.push(newBoard);
+        return newBoard;
+    },
 
-export const addBoard = (boardData) => {
-    const newBoard = { id: `${boards.length + 1}`, ...boardData };
-    boards.push(newBoard);
-    return newBoard;
-};
+    // Obtenir un board par ID
+    getBoardById: (boardId) => {
+        return boards.find(board => board.id === boardId);
+    },
 
-export const updateBoardDetails = (id, boardDetails) => {
-    const boardIndex = boards.findIndex(board => board.id === id);
-    if (boardIndex !== -1) {
-        boards[boardIndex] = { ...boards[boardIndex], ...boardDetails };
-        return boards[boardIndex];
+
+    // Mettre à jour les détails d'un board
+    updateBoard: (boardId, name, description) => {
+        const boardIndex = boards.findIndex(board => board.id === boardId);
+        if (boardIndex !== -1) {
+            boards[boardIndex].name = name;
+            boards[boardIndex].description = description;
+            return boards[boardIndex];
+        }
+        return null;
     }
-    return null;
 };

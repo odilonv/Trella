@@ -1,31 +1,33 @@
-import { getBoards, getBoard, addBoard, updateBoardDetails } from './boardService.js';
+// backend/services/boards/boardController.js
+import { v4 as uuidv4 } from 'uuid';
+import { BoardService } from './boardService.js';
 
-export const getAllBoards = (req, res) => {
-    const boards = getBoards();
-    res.status(200).json(boards);
-};
-
-export const getBoardById = (req, res) => {
-    const { boardId } = req.params;
-    const board = getBoard(boardId);
-    if (board) {
-        res.status(200).json(board);
-    } else {
-        res.status(404).send('Board not found');
-    }
-};
-
+// Créer un board
 export const createBoard = (req, res) => {
-    const newBoard = addBoard(req.body);
+    const { name, description } = req.body;
+    const newBoard = BoardService.createBoard(name, description);
     res.status(201).json(newBoard);
 };
 
+// Obtenir un board par ID
+export const getBoardById = (req, res) => {
+    const { boardId } = req.params;
+    const board = BoardService.getBoardById(boardId);
+    if (board) {
+        res.json(board);
+    } else {
+        res.status(404).json({ message: 'Board not found' });
+    }
+};
+
+// Mettre à jour les détails d'un board
 export const updateBoard = (req, res) => {
     const { boardId } = req.params;
-    const updatedBoard = updateBoardDetails(boardId, req.body);
+    const { name, description } = req.body;
+    const updatedBoard = BoardService.updateBoard(boardId, name, description);
     if (updatedBoard) {
-        res.status(200).json(updatedBoard);
+        res.json(updatedBoard);
     } else {
-        res.status(404).send('Board not found');
+        res.status(404).json({ message: 'Board not found' });
     }
 };

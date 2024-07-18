@@ -1,14 +1,10 @@
-import { Router } from 'express';
-import { getAllUsers, getUserById, updateUser, signup, login, forgotPassword, validateEmail } from './userController.js';
+// backend/services/users/userRoutes.js
+import express from 'express';
+import { createUser, getUserById, updateUser } from './userController.js';
 
-const router = Router();
+export const userRouter = express.Router();
 
-router.get('/', getAllUsers);
-router.get('/:userId', getUserById);
-router.put('/:userId', updateUser);
-router.post('/signup', signup);
-router.post('/login', login);
-router.post('/forgot-password', forgotPassword);
-router.post('/validate-email', validateEmail);
-
-export default router;
+// Routes pour les utilisateurs
+userRouter.post('/signup', createUser);
+userRouter.get('/:userId', getUserById);
+userRouter.put('/:userId', updateUser);

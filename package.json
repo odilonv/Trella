@@ -20,6 +20,7 @@
     "@mui/icons-material": "^5.15.14",
     "@mui/system": "^5.15.15",
     "@types/nodemailer": "^6.4.15",
+    "amqplib": "^0.10.4",
     "concurrently": "^7.0.0",
     "cors": "^2.8.5",
     "country-flag-emoji": "^1.0.3",

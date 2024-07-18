@@ -1,11 +1,10 @@
-import { Router } from 'express';
-import { getAllBoards, getBoardById, createBoard, updateBoard } from './boardController.js';
+// backend/services/boards/boardRoutes.js
+import express from 'express';
+import { createBoard, getBoardById, updateBoard } from './boardController.js';
 
-const router = Router();
+export const boardRouter = express.Router();
 
-router.get('/', getAllBoards);
-router.get('/:boardId', getBoardById);
-router.post('/', createBoard);
-router.put('/:boardId', updateBoard);
-
-export default router;
+// Routes pour les boards
+boardRouter.post('/', createBoard);
+boardRouter.get('/:boardId', getBoardById);
+boardRouter.put('/:boardId', updateBoard);
