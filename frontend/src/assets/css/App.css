@@ -11,6 +11,7 @@
 :root {
     /* Fixed colors */
     --main-color: rgb(0, 128, 85);
+    --main-darker-color: rgb(2, 108, 73);
     --shadow-color: rgba(113, 97, 236, 0.2);
     --light-color: #a7f2c5;
     --lighter-color: #ceffc9;

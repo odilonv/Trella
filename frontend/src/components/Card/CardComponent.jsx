@@ -10,7 +10,6 @@ function CardComponent({ card, colorTitleText, colorSubText }) {
                 justifyContent: 'left',
                 alignItems: 'start',
                 width: '100%',
-                height: '100%',
                 padding: '15px',
                 backgroundColor: 'var(--light-color)',
             }}>

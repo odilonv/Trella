@@ -1,4 +1,5 @@
 export { default as HeaderComponent } from './Header/HeaderComponent';
+export { default as HeadBarComponent } from './HeadBar/HeadBarComponent';
 export { default as FooterComponent } from './Footer/FooterComponent';
 export { default as LargeFooterComponent } from './LargeFooter/LargeFooterComponent';
 export { default as HeadTextComponent } from './HeadText/HeadTextComponent';

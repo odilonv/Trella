@@ -1,5 +1,6 @@
 import React from 'react';
-import { CardComponent } from '../../components';
+import { CardComponent, ButtonComponent } from '../../components';
+import HeadBarComponent from '../../components/HeadBar/HeadBarComponent';
 
 function TasksPage() {
     const cardsData = [
@@ -8,12 +9,33 @@ function TasksPage() {
     ];
 
     return (
-        <div className='default-container' style={{ margin: "15px" }}>
-            {cardsData.map(card => (
-                <CardComponent key={card.id} card={card} />
-            ))}
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'start',
+            flexDirection: 'column',
+            margin: "15px"
+        }}>
+            <HeadBarComponent title={'Tasks'} />
+            <div
+                className='default-container'
+                style={{
+                    display: 'flex',
+                    padding: '15px',
+                    width: '100%',
+                    flexDirection: 'column',
+                    overflowY: 'auto',
+                    height: '78vh',
+                    gap: '15px',
+                }}>
+                {cardsData.map(card => (
+                    <CardComponent key={card.id} card={card} />
+                ))}
+            </div>
         </div>
-    );
+    )
 }
+
+
 
 export default TasksPage;
