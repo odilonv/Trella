@@ -12,7 +12,8 @@ import {
   SignUpPage,
   UserPage,
   VerifyEmailPage,
-  TermsOfUsePage
+  BoardPage,
+  TasksPage
 } from './pages';
 import { NotificationProvider, UserProvider } from './contexts';
 
@@ -21,22 +22,23 @@ function App() {
     <Router>
       <UserProvider>
         <HeaderComponent />
-          <NotificationProvider>
-            <Routes>
-              <Route exact path="/" element={<HomePage />} />
-              <Route path="/home" element={<HomePage />} />
-              <Route path="/conditions" element={<TermsOfUsePage />} />
-              <Route path="/logout" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/verifyEmail/:token" element={<VerifyEmailPage />} />
-              <Route path="/signUp" element={<SignUpPage />} />
-              <Route path="/settings" element={<SettingsPage />} />
-              <Route path="/user" element={<UserPage />} />
-              <Route path="/forgotPassword" element={<ForgotPasswordPage />} />
-              <Route path="/changePassword" element={<ChangePasswordPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </NotificationProvider>
+        <NotificationProvider>
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/board" element={<BoardPage />} />
+            <Route path="/tasks" element={<TasksPage />} />
+            <Route path="/logout" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/verifyEmail/:token" element={<VerifyEmailPage />} />
+            <Route path="/signUp" element={<SignUpPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/user" element={<UserPage />} />
+            <Route path="/forgotPassword" element={<ForgotPasswordPage />} />
+            <Route path="/changePassword" element={<ChangePasswordPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </NotificationProvider>
         <FooterComponent />
       </UserProvider>
     </Router>

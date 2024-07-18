@@ -10,13 +10,13 @@ function NotFoundPage() {
                 <h1>404</h1>
             </div>
             <div className='not-found-body'>
-                <h2>Cette page n'existe pas.</h2>
+                <h2>Page Not Found.</h2>
                 <ButtonComponent
                     color={'var(--main-color)'}
-                    text={'Je retourne parier'}
-                    borderRadius={'25px'}
-                    endIcon={<ArrowForwardIosRoundedIcon />}
-                    href={'/matches'} />
+                    text={'I come back to my board'}
+                    borderRadius={'10px'}
+                    endIcon={<ArrowForwardIosRoundedIcon style={{ color: 'white' }} />}
+                    href={'/board'} />
             </div>
         </div>
     );

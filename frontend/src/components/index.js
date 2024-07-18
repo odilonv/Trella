@@ -2,6 +2,8 @@ export { default as HeaderComponent } from './Header/HeaderComponent';
 export { default as FooterComponent } from './Footer/FooterComponent';
 export { default as LargeFooterComponent } from './LargeFooter/LargeFooterComponent';
 export { default as HeadTextComponent } from './HeadText/HeadTextComponent';
+export { default as BoardComponent } from './Board/BoardComponent';
+export { default as CardComponent } from './Card/CardComponent';
 export { default as ButtonComponent } from './Button/ButtonComponent';
 export { default as RadioButtonComponent } from './Button/RadioButtonComponent';
 export { default as SearchBarComponent } from './SearchBar/SearchBarComponent';
