@@ -23,8 +23,10 @@ app.use(session({
 // Importez d'autres routes principales si nécessaire
 import { startUsersService } from './services/users/index.js';
 import { startBoardsService } from './services/boards/index.js'; // Exemple si vous avez un service boards
-import { startCardsService } from './services/cards/index.js'; // Exemple si vous avez un service cards
+import { startCardsService } from './services/cards/index.js';
+import DatabaseConnection from "./models/DatabaseConnection.js"; // Exemple si vous avez un service cards
 
+DatabaseConnection.initDatabase();
 // Démarrage des services
 startUsersService();
 startBoardsService(); // Démarrez le service des tableaux si nécessaire

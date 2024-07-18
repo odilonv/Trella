@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `user` (
     firstName VARCHAR (255) NOT NULL,
     lastName VARCHAR (255) NOT NULL,
     email VARCHAR (255) NOT NULL,
-    password VARCHAR (255) NOT NULL,
+    password VARCHAR (255) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `board` (

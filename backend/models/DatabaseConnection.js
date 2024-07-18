@@ -41,12 +41,7 @@ class DatabaseConnection {
             });
 
             await this.dropTables(connection);
-            await this.dropStoredProcedures(connection);
-            await this.insertCountries(connection);
             await this.createTables(connection);
-            await this.createIndexes(connection);
-            await this.createStoredProcedures(connection);
-            await this.createTriggers(connection);
 
             return connection;
         } catch (err) {
@@ -74,8 +69,8 @@ class DatabaseConnection {
         }
         console.log("- Tables Updated");
 
-        const sql = "INSERT INTO user (id, civility, firstName, lastName, dateOfBirth, countryOfBirth, cityOfBirth, email, emailVerificationToken, emailVerified, phoneNumber, address, complementAddress, city, password, receiveOffers, balance) " +
-            "VALUES (0, 'monsieur', 'admin', 'admin', '2003-01-01', 'France', 'Montpellier', 'admin@admin.com', '', true, '0600000000', '65 rue de trella','test', 'test','" + await User.hashPassword("admin") + "', true, 10000)";
+        const sql = "INSERT INTO user (id, firstName, lastName, email, password) " +
+            "VALUES (0, 'admin', 'admin', 'admin@admin.com','" + await User.hashPassword("admin") + "')";
         connection.query(sql);
         console.log("- Admin user created");
     }

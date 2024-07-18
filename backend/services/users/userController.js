@@ -1,15 +1,16 @@
-// backend/services/users/userController.js
-import { v4 as uuidv4 } from 'uuid';
 import { UserService } from './userService.js';
 
-// Créer un utilisateur
-export const createUser = (req, res) => {
-    const { username, email, password } = req.body;
-    const newUser = UserService.createUser(username, email, password);
-    res.status(201).json(newUser);
+export const createUser = async (req, res) => {
+    const { firstName, lastName, email, password } = req.body;
+
+    try {
+        const newUser = await UserService.createUser(firstName, lastName, email, password);
+        res.status(201).json(newUser);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 };
 
-// Obtenir un utilisateur par ID
 export const getUserById = (req, res) => {
     const { userId } = req.params;
     const user = UserService.getUserById(userId);
