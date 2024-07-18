@@ -42,10 +42,7 @@ function LoginPage() {
             login(user)
                 .then(response => {
                     if (response) {
-                        console.log(response);
-                        if (response.redirectTo) {
-                            window.location.href = `/`;
-                        }
+                        window.location.href = `/`;
                     }
                 }).catch(error => {
                     triggerNotification(error.message, 'error');

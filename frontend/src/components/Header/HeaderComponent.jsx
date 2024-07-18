@@ -1,12 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ButtonComponent from '../Button/ButtonComponent';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import { UserContext } from '../../contexts';
 
 function Header() {
-    const { user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const checkSession = async () => {
+            try {
+                const response = await fetch('http://localhost:5001/users/session', {
+                    method: 'GET',
+                    credentials: 'include',
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    setUser(data);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        checkSession();
+    }, [setUser]);
 
     const handleBoardsClick = () => {
         navigate('/matches', { state: { showRunningMatches: false } });
@@ -20,6 +38,23 @@ function Header() {
         navigate('/tasks');
     };
 
+    const handleLogoutClick = async () => {
+        try {
+            const response = await fetch('http://localhost:5001/users/logout', {
+                method: 'POST',
+                credentials: 'include',
+            });
+
+            if (response.ok) {
+                setUser(null);
+                navigate('/');
+            } else {
+                console.error('Failed to logout');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     return (
         <header>
@@ -35,6 +70,8 @@ function Header() {
                             <>
                                 <ButtonComponent text={user.firstName} color='#000000' href='/user'
                                     endIcon={<PersonRoundedIcon htmlColor='white' />} />
+                                <ButtonComponent text="Déconnexion" textColor='var(--white)' color='var(--black)'
+                                    onClick={handleLogoutClick} />
                             </>
                         ) : (
                             <>
