@@ -31,5 +31,9 @@ export const BoardService = {
             return boards[boardIndex];
         }
         return null;
+    },
+
+    getCardsByBoardId: (boardId) => {
+        return cards.filter(card => card.boardId === boardId);
     }
 };
