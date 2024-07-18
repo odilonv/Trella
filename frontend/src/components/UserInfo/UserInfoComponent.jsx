@@ -17,13 +17,13 @@ function UserInfoComponent({ headerText, value, isEditingComponent, handleSave, 
                 {handleSave && handleModify &&
                     <span className="user-info-settings-container">
                         <IconButton
-                            style={{ color: 'var(--main-purple)', padding: '0' }}
+                            style={{ color: 'var(--main-color)', padding: '0' }}
                             onClick={isEditingComponent ? handleSave : handleModify}
                         >
                             {isEditingComponent ? <DoneRoundedIcon /> : <SettingsRoundedIcon />}
                         </IconButton>
                         {isEditingComponent &&
-                            <IconButton style={{ color: 'var(--main-purple)', padding: '0' }} onClick={handleCancel}>
+                            <IconButton style={{ color: 'var(--main-color)', padding: '0' }} onClick={handleCancel}>
                                 <CloseRoundedIcon />
                             </IconButton>
                         }

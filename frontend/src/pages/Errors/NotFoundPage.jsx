@@ -12,7 +12,7 @@ function NotFoundPage() {
             <div className='not-found-body'>
                 <h2>Cette page n'existe pas.</h2>
                 <ButtonComponent
-                    color={'var(--main-purple)'}
+                    color={'var(--main-color)'}
                     text={'Je retourne parier'}
                     borderRadius={'25px'}
                     endIcon={<ArrowForwardIosRoundedIcon />}

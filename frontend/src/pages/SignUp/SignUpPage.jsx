@@ -344,7 +344,7 @@ function SignUpPage() {
                     </div>
                 </form>
                 <Backdrop open={isLoading} style={{ zIndex: 10000 }}>
-                    <CircularProgress style={{ color: 'var(--main-purple)' }} size={100} />
+                    <CircularProgress style={{ color: 'var(--main-color)' }} size={100} />
                 </Backdrop>
             </div >
         </div >
