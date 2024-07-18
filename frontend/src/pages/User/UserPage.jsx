@@ -52,7 +52,7 @@ function UserPage() {
         const year = date.getFullYear();
         return `${day}/${month}/${year}`;
     }
-    
+
     return (
         <form>
             <div className={"user-categories-container"}>
@@ -181,7 +181,7 @@ function UserPage() {
                                     />,
                                     <UserInfoEntryComponent
                                         key="selfExclusion"
-                                        entryLabel={<ButtonComponent text={"Auto exclusion"} color={"var(--main-purple)"}
+                                        entryLabel={<ButtonComponent text={"Auto exclusion"} color={"var(--main-color)"}
                                             entryValue={user.selfExclusion ? "Enabled" : "Disabled"}
                                             textColor={'var(--white)'}
                                             fontWeight={400} />}
@@ -218,7 +218,6 @@ function UserPage() {
                                 ]
                             }
                         />
-
                         <h5>Tu souhaites rectifier des informations ? Merci de contacter le service client.</h5>
                     </>
                 ) : null}

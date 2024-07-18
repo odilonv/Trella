@@ -10,7 +10,7 @@
 
 :root {
     /* Fixed colors */
-    --main-purple: #7161EC;
+    --main-color: rgb(0, 128, 85);
     --shadow-purple: rgba(113, 97, 236, 0.2);
     --light-purple: #B0A7F2;
     --lighter-purple: #D9C9FF;
@@ -208,7 +208,7 @@ footer.large-footer {
 }
 
 .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-adornedStart.MuiInputBase-adornedEnd.css-15mfqiu-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: var(--main-purple) !important;
+    border-color: var(--main-color) !important;
 }
 
 @keyframes bounce {
@@ -252,83 +252,6 @@ footer.large-footer {
     margin-bottom: 15vh;
 }
 
-.homeVitalityLogo:hover,
-.homeG2Logo:hover,
-.homeKCLogo:hover {
-    animation: bounce 0.6s;
-}
-
-.homeKCLogo {
-    width: 300px;
-    height: 300px;
-    transform: rotate(5deg);
-    position: absolute;
-    top: 85px;
-    right: 100px;
-    filter: drop-shadow(0 0 10px rgba(48, 60, 162, 0.7));
-}
-
-.homeVitalityLogo {
-    width: 225px;
-    height: 225px;
-    transform: rotate(-5deg);
-    position: absolute;
-    bottom: 25px;
-    right: 320px;
-    filter: drop-shadow(0 0 10px rgba(48, 60, 162, 0.7));
-}
-
-.homeG2Logo {
-    width: 200px;
-    height: 200px;
-    transform: rotate(5deg);
-    position: absolute;
-    bottom: -25px;
-    right: 45px;
-    filter: drop-shadow(0 0 10px rgba(48, 60, 162, 0.7));
-}
-
-
-.blueRectangle {
-    display: flex;
-    top: 0;
-    height: 100%;
-    z-index: 1;
-    width: 650px;
-    background-color: #303CA2;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.smallTitle {
-    gap: 10px;
-    color: #D90429;
-    font-size: 0.6em;
-    text-transform: uppercase;
-    margin-bottom: 2%;
-}
-
-.homeBlock {
-    margin-left: 45%;
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 10%;
-}
-
-.homeMainText {
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 3em;
-    color: #101366;
-}
 
 .noSelect {
     -webkit-touch-callout: none;
@@ -366,7 +289,7 @@ footer.large-footer {
 }
 
 .filter-entry-active {
-    color: var(--main-purple);
+    color: var(--main-color);
     text-decoration: underline;
     text-decoration-thickness: 2px;
     transition: transform 0.3s ease;
@@ -389,7 +312,7 @@ footer.large-footer {
     position: absolute;
     top: -7px;
     right: -13px;
-    background-color: var(--main-purple);
+    background-color: var(--main-color);
     color: white;
     border-radius: 50%;
     padding: 2px 6px;
@@ -407,7 +330,7 @@ footer.large-footer {
 }
 
 .header-link:hover {
-    color: var(--main-purple);
+    color: var(--main-color);
 }
 
 .app-header .balance-container {
@@ -416,8 +339,8 @@ footer.large-footer {
     justify-content: center;
     gap: 5px;
     background-color: var(--white);
-    border: 1px solid var(--main-purple);
-    color: var(--main-purple);
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
     padding: 1px 10px;
     border-radius: 5px;
     margin: 0 8px;
@@ -434,6 +357,24 @@ footer.large-footer {
     background-color: var(--white);
     box-shadow: var(--box-shadow);
     border-radius: 10px;
+}
+
+.home-container {
+    padding: 8%;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    height: 85vh;
+    gap: 10%;
+    display: flex;
+}
+
+.home-container>div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .drop-shadow {
@@ -473,7 +414,7 @@ footer.large-footer {
 }
 
 .shiny-text {
-    background: radial-gradient(circle, var(--main-purple), var(--lighter-purple));
+    background: radial-gradient(circle, var(--main-color), var(--lighter-purple));
     background-clip: text;
     color: transparent;
     animation: shiny-text 3s linear infinite;
@@ -526,7 +467,7 @@ footer.large-footer {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--main-purple);
+    background: var(--main-color);
 }
 
 ::-webkit-scrollbar-button {

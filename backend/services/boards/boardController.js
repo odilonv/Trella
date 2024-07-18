@@ -31,3 +31,9 @@ export const updateBoard = (req, res) => {
         res.status(404).json({ message: 'Board not found' });
     }
 };
+
+export const getCardsByBoardId = (req, res) => {
+    const { boardId } = req.params;
+    const cards = BoardService.getCardsByBoardId(boardId);
+    res.json(cards);
+}

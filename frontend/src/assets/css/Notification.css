@@ -11,6 +11,6 @@
     display: flex;
     gap: 10px;
     color: black;
-    box-shadow: 0 10px 20px -15px var(--main-purple);
+    box-shadow: 0 10px 20px -15px var(--main-color);
     text-align: center;
 }

@@ -40,5 +40,9 @@ export const BoardService = {
         );
 
         return this.getBoardById(boardId);
+    },
+
+    getCardsByBoardId: (boardId) => {
+        return cards.filter(card => card.boardId === boardId);
     }
 };
