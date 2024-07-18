@@ -40,13 +40,13 @@ class DatabaseConnection {
                 database: 'trella_db',
             });
 
-            // await this.dropTables(connection);
-            // await this.dropStoredProcedures(connection);
-            // await this.insertCountries(connection);
-            // await this.createTables(connection);
-            // await this.createIndexes(connection);
-            // await this.createStoredProcedures(connection);
-            // await this.createTriggers(connection);
+            await this.dropTables(connection);
+            await this.dropStoredProcedures(connection);
+            await this.insertCountries(connection);
+            await this.createTables(connection);
+            await this.createIndexes(connection);
+            await this.createStoredProcedures(connection);
+            await this.createTriggers(connection);
 
             return connection;
         } catch (err) {
