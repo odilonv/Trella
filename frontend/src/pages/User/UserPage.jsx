@@ -9,8 +9,6 @@ import LockResetRoundedIcon from '@mui/icons-material/LockResetRounded';
 import IdentityIcon from '@mui/icons-material/PersonRounded';
 import ContactIcon from '@mui/icons-material/CallRounded';
 import SecurityIcon from '@mui/icons-material/LockRounded';
-import LimitsIcon from '@mui/icons-material/PanToolRounded';
-import PreferencesIcon from '@mui/icons-material/TuneRounded';
 import { UserContext } from "../../contexts/UserContext";
 
 
@@ -44,14 +42,6 @@ function UserPage() {
     const handleDeleteAccount = () => {
         setIsModalVisible(true);
     };
-
-    function formatDate(dateString) {
-        const date = new Date(dateString);
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const year = date.getFullYear();
-        return `${day}/${month}/${year}`;
-    }
 
     return (
         <form>

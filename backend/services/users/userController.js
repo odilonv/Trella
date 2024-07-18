@@ -36,7 +36,6 @@ export const sessionUser = (req, res) => {
     }
 };
 
-// Mettre à jour les détails d'un utilisateur
 export const updateUser = (req, res) => {
     const { userId } = req.params;
     const { username, email } = req.body;
@@ -55,4 +54,19 @@ export const logoutUser = (req, res) => {
         }
         res.status(200).json({ message: 'Logged out successfully' });
     });
+};
+
+export const deleteUser = async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const success = await UserService.deleteUser(userId);
+        if (success) {
+            res.status(200).json({ message: 'User deleted successfully' });
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
+    }
 };

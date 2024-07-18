@@ -30,7 +30,7 @@ async function signUp(user) {
 }
 
 async function logout() {
-    const response = await fetch('http://localhost:5001/api/data/session/logout', {
+    const response = await fetch('http://localhost:5001/users/logout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ async function updateUser(user) {
 }
 
 async function deleteUser(password) {
-    const response = await fetch('http://localhost:5001/api/data/session/deleteAccount', {
+    const response = await fetch('http://localhost:5001/users/delete', {
         method: 'DELETE',
         credentials: 'include',
         headers: {

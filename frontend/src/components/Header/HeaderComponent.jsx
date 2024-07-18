@@ -70,14 +70,10 @@ function Header() {
                             <>
                                 <ButtonComponent text={user.firstName} color='#000000' href='/user'
                                     endIcon={<PersonRoundedIcon htmlColor='white' />} />
-                                <ButtonComponent text="Déconnexion" textColor='var(--white)' color='var(--black)'
-                                    onClick={handleLogoutClick} />
                             </>
                         ) : (
-                            <>
-                                <ButtonComponent text="Connexion" textColor='var(--white)' color='var(--black)'
-                                    href='/login' />
-                            </>
+                            <ButtonComponent text="Connexion" textColor='var(--white)' color='var(--black)'
+                                href='/login' />
                         )}
                     </div>
                 </div>

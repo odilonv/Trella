@@ -5,11 +5,14 @@ import User from '../../models/User.js';
 export const UserService = {
     // Créer un utilisateur
     createUser: async (firstName, lastName, email, password) => {
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
         const newUser = {
             firstName,
             lastName,
             email,
-            password // Note: Vous devriez hasher ce mot de passe avant de l'enregistrer
+            password: hashedPassword
         };
 
         const connection = await DatabaseConnection.getInstance();
@@ -39,5 +42,12 @@ export const UserService = {
         }
         return null;
     },
+
+    // Supprimer un utilisateur
+    deleteUser: async (userId) => {
+        const connection = await DatabaseConnection.getInstance();
+        const [result] = await connection.query('DELETE FROM user WHERE id = ?', [userId]);
+        return result.affectedRows > 0; // Retourne true si un utilisateur a été supprimé, false sinon
+    }
 
 };

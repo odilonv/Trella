@@ -40,15 +40,12 @@ function SignUpPage() {
             triggerNotification('Veuillez corriger les champs invalides.', 'error');
             return;
         }
-
         setIsLoading(true);
-
         try {
-            console.log(user);
             const response = await register(user);
             const json = await response.json();
-            if (response.status === 200) {
-                triggerNotification('Inscription réussie, un email de vérification a été envoyé', 'success');
+            if (response.ok) {
+                triggerNotification('Inscription réussie', 'success');
                 navigate('/login');
             } else {
                 triggerNotification(json.error, 'error');
@@ -57,7 +54,7 @@ function SignUpPage() {
             console.error(error);
             triggerNotification('Une erreur s\'est produite', 'error');
         } finally {
-            setIsLoading(false); // Stop loading
+            setIsLoading(false);
         }
     };
 
