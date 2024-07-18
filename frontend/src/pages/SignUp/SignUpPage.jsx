@@ -44,6 +44,7 @@ function SignUpPage() {
         setIsLoading(true);
 
         try {
+            console.log(user);
             const response = await register(user);
             const json = await response.json();
             if (response.status === 200) {
@@ -94,7 +95,7 @@ function SignUpPage() {
                     </div>
                     <div style={{ textAlign: 'center' }}>
                         <ButtonComponent onClick={handleSignUp} type={'submit'} text={"S'inscrire"}
-                            preventValidation={!validate() || !user.termsAccepted} />
+                            preventValidation={!validate()} />
                     </div>
                 </form>
                 <Backdrop open={isLoading} style={{ zIndex: 10000 }}>

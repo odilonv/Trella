@@ -1,5 +1,5 @@
 async function login(user) {
-    const response = await fetch('http://localhost:5001/api/data/session/login', {
+    const response = await fetch('http://localhost:5001/users/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -62,13 +62,6 @@ async function getLoggedUser() {
     } else {
         return null;
     }
-}
-
-export async function clearFinishedBets() {
-    await fetch('http://localhost:5001/api/data/session/bets', {
-        method: 'DELETE',
-        credentials: 'include',
-    });
 }
 
 

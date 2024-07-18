@@ -1,23 +1,38 @@
 import { UserService } from './userService.js';
 
 export const createUser = async (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
-
+    const { firstName, lastName, email, password } = req.body.user;
     try {
         const newUser = await UserService.createUser(firstName, lastName, email, password);
         res.status(201).json(newUser);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: error.message });
     }
 };
 
-export const getUserById = (req, res) => {
-    const { userId } = req.params;
-    const user = UserService.getUserById(userId);
+export const loginUser = async (req, res) => {
+    const { email, password } = req.body.user;
+    try {
+        const user = await UserService.loginUser(email, password);
+        if (user) {
+            req.session.user = user;
+            res.json(user);
+        } else {
+            res.status(401).json({ message: 'Invalid email or password' });
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export const sessionUser = (req, res) => {
+    const user = req.session.user;
     if (user) {
         res.json(user);
     } else {
-        res.status(404).json({ message: 'User not found' });
+        res.status(401).json({ message: 'User not logged in' });
     }
 };
 
