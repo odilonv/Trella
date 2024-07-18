@@ -33,7 +33,7 @@ function ButtonComponent({
             className={className}
             target={target}
             style={{
-                backgroundColor: preventValidation ? 'var(--light-purple)' : color ?? 'var(--main-color)',
+                backgroundColor: preventValidation ? 'var(--light-color)' : color ?? 'var(--main-color)',
                 color: textColor ?? 'white',
                 fontFamily: 'Poppins',
                 textTransform: 'initial',

@@ -8,8 +8,8 @@ function Header() {
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
 
-    const handleBoardsClick = () => {
-        navigate('/matches', { state: { showRunningMatches: false } });
+    const handleBoardClick = () => {
+        navigate('/board');
     };
 
     const handleTrellaClick = () => {
@@ -27,7 +27,7 @@ function Header() {
                 <span onClick={handleTrellaClick} id='logo-header'>Trella</span>
                 <div>
                     <div className="header-link-container">
-                        <span className="header-link" onClick={handleBoardsClick}>Boards</span>
+                        <span className="header-link" onClick={handleBoardClick}>Board</span>
                         <span className="header-link" onClick={handleTasksClick}>Tasks</span>
                     </div>
                     <div className='app-header-buttons'>

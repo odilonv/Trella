@@ -11,9 +11,9 @@
 :root {
     /* Fixed colors */
     --main-color: rgb(0, 128, 85);
-    --shadow-purple: rgba(113, 97, 236, 0.2);
-    --light-purple: #B0A7F2;
-    --lighter-purple: #D9C9FF;
+    --shadow-color: rgba(113, 97, 236, 0.2);
+    --light-color: #a7f2c5;
+    --lighter-color: #ceffc9;
     --white-purple: #e8e0ff;
     --won-green: #A9FF9B;
     --won-green-text: #298D18;
@@ -364,7 +364,7 @@ footer.large-footer {
     align-items: center;
     width: 100%;
     text-align: left;
-    height: 85vh;
+    height: 88.5vh;
     gap: 10%;
     display: flex;
 }
@@ -414,7 +414,7 @@ footer.large-footer {
 }
 
 .shiny-text {
-    background: radial-gradient(circle, var(--main-color), var(--lighter-purple));
+    background: radial-gradient(circle, var(--main-color), var(--lighter-color));
     background-clip: text;
     color: transparent;
     animation: shiny-text 3s linear infinite;
