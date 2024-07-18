@@ -1,10 +1,13 @@
 // backend/services/users/userRoutes.js
 import express from 'express';
-import { createUser, getUserById, updateUser } from './userController.js';
+import { createUser, loginUser, sessionUser, updateUser, logoutUser, deleteUser } from './userController.js';
 
 export const userRouter = express.Router();
 
 // Routes pour les utilisateurs
 userRouter.post('/signup', createUser);
-userRouter.get('/:userId', getUserById);
+userRouter.post('/login', loginUser);
+userRouter.post('/logout', logoutUser);
+userRouter.post('/delete', deleteUser);
+userRouter.get('/session', sessionUser)
 userRouter.put('/:userId', updateUser);

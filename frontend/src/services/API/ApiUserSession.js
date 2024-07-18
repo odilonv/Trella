@@ -1,5 +1,5 @@
 async function login(user) {
-    const response = await fetch('http://localhost:5001/api/data/session/login', {
+    const response = await fetch('http://localhost:5001/users/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ async function signUp(user) {
 }
 
 async function logout() {
-    const response = await fetch('http://localhost:5001/api/data/session/logout', {
+    const response = await fetch('http://localhost:5001/users/logout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -64,13 +64,6 @@ async function getLoggedUser() {
     }
 }
 
-export async function clearFinishedBets() {
-    await fetch('http://localhost:5001/api/data/session/bets', {
-        method: 'DELETE',
-        credentials: 'include',
-    });
-}
-
 
 export async function getLoginStatus() {
     const response = await fetch('http://localhost:5001/api/data/session', {
@@ -84,7 +77,7 @@ async function requireLoggedUser() {
     if (await getLoginStatus() === 200) {
         return true;
     } else {
-        window.location.href = `/login`;
+        // window.location.href = `/login`;
     }
 }
 
@@ -115,7 +108,7 @@ async function updateUser(user) {
 }
 
 async function deleteUser(password) {
-    const response = await fetch('http://localhost:5001/api/data/session/deleteAccount', {
+    const response = await fetch('http://localhost:5001/users/delete', {
         method: 'DELETE',
         credentials: 'include',
         headers: {

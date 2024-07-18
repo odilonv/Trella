@@ -40,13 +40,8 @@ class DatabaseConnection {
                 database: 'trella_db',
             });
 
-            await this.dropTables(connection);
-            await this.dropStoredProcedures(connection);
-            await this.insertCountries(connection);
-            await this.createTables(connection);
-            await this.createIndexes(connection);
-            await this.createStoredProcedures(connection);
-            await this.createTriggers(connection);
+            // await this.dropTables(connection);
+            // await this.createTables(connection);
 
             return connection;
         } catch (err) {
@@ -74,8 +69,9 @@ class DatabaseConnection {
         }
         console.log("- Tables Updated");
 
-        
-
+        const sql = "INSERT INTO user (id, firstName, lastName, email, password) " +
+            "VALUES (0, 'admin', 'admin', 'admin@admin.com','" + await User.hashPassword("admin") + "')";
+        connection.query(sql);
         console.log("- Admin user created");
     }
 }
