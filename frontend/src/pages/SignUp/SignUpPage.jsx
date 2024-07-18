@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CircularProgress, Backdrop } from '@mui/material';
-import { ButtonComponent, RadioButtonComponent, InputComponent, PasswordCreationComponent } from '../../components';
+import { ButtonComponent, InputComponent, PasswordCreationComponent } from '../../components';
 import { register, requireGuestUser } from "../../services/API/ApiUserSession";
 import { useNotification } from '../../contexts/NotificationContext';
-import { checkPassword, checkAge, checkIsEmail, checkOnlyAlphabets } from '../../services/utils/ValidateUtils';
+import { checkPassword, checkIsEmail, checkOnlyAlphabets } from '../../services/utils/ValidateUtils';
 
 function SignUpPage() {
     const { triggerNotification } = useNotification();
@@ -16,10 +16,9 @@ function SignUpPage() {
         email: '',
         password: '',
         confirmPassword: '',
-        termsAccepted: false,
     });
 
-    const [isLoading, setIsLoading] = useState(false); // Loading state
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -28,17 +27,11 @@ function SignUpPage() {
         fetchData();
     }, []);
 
-    const handleTermsAcceptedChange = (event) => setUser(prevUser => ({
-        ...prevUser,
-        termsAccepted: event.target.checked
-    }));
-
     const validate = () => {
-        return checkOnlyAlphabets(user.lastName) === null && // Modification ici
-            checkOnlyAlphabets(user.firstName) === null && // Modification ici
-            checkAge(user.dateOfBirth) === null &&
-            checkPassword(user.password) == null && user.password === user.confirmPassword
-            && user.termsAccepted;
+        return checkOnlyAlphabets(user.lastName) === null &&
+            checkOnlyAlphabets(user.firstName) === null &&
+            checkIsEmail(user.email) === null &&
+            checkPassword(user.password) == null && user.password === user.confirmPassword;
     };
 
 
@@ -98,13 +91,6 @@ function SignUpPage() {
                             setPassword={(value) => setUser({ ...user, password: value })}
                             setConfirmPassword={(value) => setUser({ ...user, confirmPassword: value })}
                         />
-                        <div style={{ marginTop: '16px' }}>
-                            <RadioButtonComponent
-                                label="Je certifie avoir plus de 18 ans. J'ai lu et j'accepte les Conditions Générales et la Charte sur le Respect de la Vie Privée"
-                                checked={user.termsAccepted}
-                                onChange={handleTermsAcceptedChange}
-                            />
-                        </div>
                     </div>
                     <div style={{ textAlign: 'center' }}>
                         <ButtonComponent onClick={handleSignUp} type={'submit'} text={"S'inscrire"}
