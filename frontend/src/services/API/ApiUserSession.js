@@ -77,7 +77,7 @@ async function requireLoggedUser() {
     if (await getLoginStatus() === 200) {
         return true;
     } else {
-        window.location.href = `/login`;
+        // window.location.href = `/login`;
     }
 }
 

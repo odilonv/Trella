@@ -62,10 +62,6 @@ function UserPage() {
                     <UserInfoCategoryComponent entryLabel="Contact" icon={<ContactIcon />} />
                     <Divider />
                     <UserInfoCategoryComponent entryLabel="Sécurité" icon={<SecurityIcon />} />
-                    <Divider />
-                    <UserInfoCategoryComponent entryLabel="Limites" icon={<LimitsIcon />} />
-                    <Divider />
-                    <UserInfoCategoryComponent entryLabel="Préférences" icon={<PreferencesIcon />} />
                 </div>
                 <div className="manage-account-container">
                     <div className="manage-account-button" onClick={handleLogout}>Se déconnecter<LogoutRoundedIcon />
@@ -83,10 +79,6 @@ function UserPage() {
                             value={
                                 [
                                     <UserInfoEntryComponent
-                                        key="civility"
-                                        entryLabel="Civilité"
-                                        entryValue={user.civility} />,
-                                    <UserInfoEntryComponent
                                         key="firstName"
                                         entryLabel="Prénom"
                                         entryValue={user.firstName} />,
@@ -94,21 +86,6 @@ function UserPage() {
                                         key="lastName"
                                         entryLabel="Nom"
                                         entryValue={user.lastName} />,
-                                    <UserInfoEntryComponent
-                                        key="dateOfBirth"
-                                        entryLabel="Date de naissance"
-                                        entryValue={formatDate(user.dateOfBirth)}
-                                    />,
-                                    <UserInfoEntryComponent
-                                        key="countryOfBirth"
-                                        entryLabel="Pays de naissance"
-                                        entryValue={user.countryOfBirth}
-                                    />,
-                                    <UserInfoEntryComponent
-                                        key="cityOfBirth"
-                                        entryLabel="Ville de naissance"
-                                        entryValue={user.cityOfBirth}
-                                    />
                                 ]
                             }
                         />
@@ -122,23 +99,6 @@ function UserPage() {
                                         entryLabel="Email"
                                         entryValue={user.email}
                                     />,
-                                    <UserInfoEntryComponent
-                                        key="phoneNumber"
-                                        entryLabel="Téléphone"
-                                        entryValue={user.phoneNumber}
-                                    />,
-                                    <UserInfoEntryComponent
-                                        key="address"
-                                        entryLabel="Adresse"
-                                        entryValue={user.address} />,
-                                    <UserInfoEntryComponent
-                                        key="complementAddress"
-                                        entryLabel="Complément d'adresse"
-                                        entryValue={user.complementAddress} />,
-                                    <UserInfoEntryComponent
-                                        key="city"
-                                        entryLabel="Ville"
-                                        entryValue={user.city} />,
                                 ]
                             }
                         />
@@ -156,65 +116,6 @@ function UserPage() {
                                                 href="/changePassword"><LockResetRoundedIcon /></IconButton>}
                                         />
                                     </div>
-                                ]
-                            }
-                        />
-                        <UserInfoComponent
-                            key="limits"
-                            headerText="Limites"
-                            value={
-                                [
-                                    <UserInfoEntryComponent
-                                        key="depositLimit"
-                                        entryLabel="Limite de dépôt"
-                                        entryValue={user.depositLimit}
-                                    />,
-                                    <UserInfoEntryComponent
-                                        key="betLimit"
-                                        entryLabel="Limite de pari"
-                                        entryValue={user.betLimit}
-                                    />,
-                                    <UserInfoEntryComponent
-                                        key="automaticWithdraw"
-                                        entryLabel="Retrait automatique"
-                                        entryValue={user.automaticWithdraw}
-                                    />,
-                                    <UserInfoEntryComponent
-                                        key="selfExclusion"
-                                        entryLabel={<ButtonComponent text={"Auto exclusion"} color={"var(--main-color)"}
-                                            entryValue={user.selfExclusion ? "Enabled" : "Disabled"}
-                                            textColor={'var(--white)'}
-                                            fontWeight={400} />}
-                                    />,
-                                ]
-                            }
-                        />
-
-                        <UserInfoComponent
-                            key="preferences"
-                            headerText="Préférences"
-                            value={
-                                [
-                                    <UserInfoEntryComponent
-                                        key="currency"
-                                        entryLabel="Monnaie"
-                                        entryValue={user.currency}
-                                    />,
-                                    <UserInfoEntryComponent
-                                        key="timezone"
-                                        entryLabel="Fuseau horaire"
-                                        entryValue={user.timezone}
-                                    />,
-                                    <UserInfoEntryComponent
-                                        key="theme"
-                                        entryLabel="Thème"
-                                        entryValue={user.theme}
-                                    />,
-                                    <UserInfoEntryComponent
-                                        key="receiveOffers"
-                                        entryLabel="Recevoir des offres"
-                                        entryValue={user.receiveOffers}
-                                    />,
                                 ]
                             }
                         />
