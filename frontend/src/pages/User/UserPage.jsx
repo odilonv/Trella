@@ -218,7 +218,6 @@ function UserPage() {
                                 ]
                             }
                         />
-
                         <h5>Tu souhaites rectifier des informations ? Merci de contacter le service client.</h5>
                     </>
                 ) : null}

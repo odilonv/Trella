@@ -1,5 +1,5 @@
 async function login(user) {
-    const response = await fetch('http://localhost:5000/api/data/session/login', {
+    const response = await fetch('http://localhost:5001/api/data/session/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -14,9 +14,9 @@ async function login(user) {
     }
 }
 
-async function register(user) {
+async function signUp(user) {
     try {
-        const response = await fetch('http://localhost:5000/api/data/session/register', {
+        const response = await fetch('http://localhost:5001/users/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ async function register(user) {
 }
 
 async function logout() {
-    const response = await fetch('http://localhost:5000/api/data/session/logout', {
+    const response = await fetch('http://localhost:5001/api/data/session/logout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ async function logout() {
 }
 
 async function isLogged() {
-    const response = await fetch('http://localhost:5000/api/data/session', {
+    const response = await fetch('http://localhost:5001/api/data/session', {
         method: 'GET',
         credentials: 'include',
     });
@@ -51,7 +51,7 @@ async function isLogged() {
 }
 
 async function getLoggedUser() {
-    const response = await fetch('http://localhost:5000/api/data/session', {
+    const response = await fetch('http://localhost:5001/api/data/session', {
         method: 'GET',
         credentials: 'include',
     });
@@ -65,7 +65,7 @@ async function getLoggedUser() {
 }
 
 export async function clearFinishedBets() {
-    await fetch('http://localhost:5000/api/data/session/bets', {
+    await fetch('http://localhost:5001/api/data/session/bets', {
         method: 'DELETE',
         credentials: 'include',
     });
@@ -73,7 +73,7 @@ export async function clearFinishedBets() {
 
 
 export async function getLoginStatus() {
-    const response = await fetch('http://localhost:5000/api/data/session', {
+    const response = await fetch('http://localhost:5001/api/data/session', {
         method: 'GET',
         credentials: 'include',
     });
@@ -97,7 +97,7 @@ export async function requireGuestUser() {
 }
 
 async function updateUser(user) {
-    const response = await fetch('http://localhost:5000/api/data/session/user', {
+    const response = await fetch('http://localhost:5001/api/data/session/user', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -115,7 +115,7 @@ async function updateUser(user) {
 }
 
 async function deleteUser(password) {
-    const response = await fetch('http://localhost:5000/api/data/session/deleteAccount', {
+    const response = await fetch('http://localhost:5001/api/data/session/deleteAccount', {
         method: 'DELETE',
         credentials: 'include',
         headers: {
@@ -128,7 +128,7 @@ async function deleteUser(password) {
 }
 
 async function changePassword(oldPassword, newPassword, confirmPassword) {
-    const response = await fetch('http://localhost:5000/api/data/session/changePassword', {
+    const response = await fetch('http://localhost:5001/api/data/session/changePassword', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -142,7 +142,7 @@ async function changePassword(oldPassword, newPassword, confirmPassword) {
 
 async function resetPassword(token, newPassword, confirmPassword) {
     try {
-        const response = await fetch('http://localhost:5000/api/data/session/resetPassword', {
+        const response = await fetch('http://localhost:5001/api/data/session/resetPassword', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -164,7 +164,7 @@ async function resetPassword(token, newPassword, confirmPassword) {
 
 export {
     login,
-    register,
+    signUp as register,
     logout,
     isLogged,
     requireLoggedUser,
