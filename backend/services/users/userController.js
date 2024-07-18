@@ -1,11 +1,10 @@
 // backend/services/users/userController.js
-import { v4 as uuidv4 } from 'uuid';
 import { UserService } from './userService.js';
 
 // Créer un utilisateur
 export const createUser = (req, res) => {
-    const { username, email, password } = req.body;
-    const newUser = UserService.createUser(username, email, password);
+    const { lastName, firstName, email, password } = req.body;
+    const newUser = UserService.createUser(lastName, firstName, email, password);
     res.status(201).json(newUser);
 };
 
