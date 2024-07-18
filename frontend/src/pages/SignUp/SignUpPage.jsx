@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TextField, CircularProgress, Backdrop } from '@mui/material';
+import { CircularProgress, Backdrop } from '@mui/material';
 import { ButtonComponent, RadioButtonComponent, InputComponent, PasswordCreationComponent } from '../../components';
 import { register, requireGuestUser } from "../../services/API/ApiUserSession";
 import { useNotification } from '../../contexts/NotificationContext';
@@ -31,10 +31,6 @@ function SignUpPage() {
     const handleTermsAcceptedChange = (event) => setUser(prevUser => ({
         ...prevUser,
         termsAccepted: event.target.checked
-    }));
-    const handleReceiveOffersChange = (event) => setUser(prevUser => ({
-        ...prevUser,
-        receiveOffers: event.target.checked
     }));
 
     const validate = () => {
