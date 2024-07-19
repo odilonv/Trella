@@ -8,11 +8,11 @@ function CardComponent({ card, colorTitleText, colorSubText, assignCard = false 
             className='default-container'
             style={{
                 display: 'flex',
+                height: '100%',
                 justifyContent: 'space-between',
                 alignItems: 'start',
                 width: '100%',
                 padding: '15px',
-                margin: '10px 0',
                 backgroundColor: 'var(--light-color)',
             }}>
             <div
