@@ -89,14 +89,20 @@ function CreationFormComponent({ theme, handleSubmit, name, description, setName
                     {boards && boards.length > 0 ? (
                         boards.map((board) => (
                             <div key={board.id} >
-                                <label>
+                                <label
+                                    style={{
+                                        display: 'flex',
+                                        gap: '5px',
+                                        alignItems: 'center',
+                                        justifyContent: 'start',
+                                    }}>
                                     <input
                                         type="checkbox"
                                         value={board.id}
                                         checked={!!selectedBoards[board.id]}
                                         onChange={handleBoardSelectionChange}
                                     />
-                                    {board.name}
+                                    <>{board.name}</>
                                 </label>
                             </div>
                         ))
