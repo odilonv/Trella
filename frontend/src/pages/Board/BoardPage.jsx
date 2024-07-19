@@ -65,7 +65,7 @@ function BoardPage() {
 
         // Update card state on server
 
-        await ApiCards.updateCard(updatedCard.id, updatedCard.title, updatedCard.description, board.id, updatedCard.state);
+        ApiCards.updateCard(updatedCard.id, updatedCard.title, updatedCard.description, board.id, updatedCard.state);
 
         // Update card state in local state
         setCards(cards.map(card => card.id === updatedCard.id ? updatedCard : card));
