@@ -1,5 +1,4 @@
 export { default as HomePage } from './Home/HomePage';
-export { default as CardListPage } from './Card/CardListPage';
 export { default as CardCreationPage } from './Card/CardCreationPage';
 export { default as BoardPage } from './Board/BoardPage';
 export { default as BoardCreationPage } from './Board/BoardCreationPage';

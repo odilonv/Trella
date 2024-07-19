@@ -34,10 +34,6 @@ function Header() {
         navigate('/');
     };
 
-    const handleCardsClick = () => {
-        navigate('/cards');
-    };
-
     const handleLogoutClick = async () => {
         try {
             const response = await fetch('http://localhost:5001/users/logout', {
@@ -67,7 +63,6 @@ function Header() {
                         user && (
                             <div className="header-link-container">
                                 <span className="header-link" onClick={handleBoardsClick}>Boards</span>
-                                <span className="header-link" onClick={handleCardsClick}>Cards</span>
                             </div>
 
                         )
