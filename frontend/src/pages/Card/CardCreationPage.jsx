@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CreationFormComponent } from '../../components';
-import {ApiBoards} from "../../services/API/ApiBoards";
-import {ApiCards} from "../../services/API/ApiCards";
+import { ApiBoards } from "../../services/API/ApiBoards";
+import { ApiCards } from "../../services/API/ApiCards";
 
 function CardCreationPage() {
     const [name, setName] = useState('');
@@ -14,7 +14,7 @@ function CardCreationPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let response = await ApiCards.createCard(name, description, boardId);
-        // navigate('/boards');
+        navigate('/boards');
     };
 
 

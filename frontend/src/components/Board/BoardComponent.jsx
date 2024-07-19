@@ -51,10 +51,9 @@ function BoardComponent({ titleText, colorTitleText, subText, colorSubText, card
                                         {...provided.dragHandleProps}
                                         style={{
                                             userSelect: 'none',
-                                            padding: '16px',
-                                            margin: '0 0 8px 0',
                                             minHeight: '50px',
                                             backgroundColor: '#fff',
+                                            borderRadius: '10px',
                                             color: '#333',
                                             ...provided.draggableProps.style
                                         }}
