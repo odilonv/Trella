@@ -27,7 +27,7 @@ function BoardPage() {
     useEffect(() => {
         const fetchCards = async () => {
             try {
-                const boardId = 1; // Remplacez par l'ID du tableau
+                const boardId = window.location.pathname.split('/').pop();
                 const cardsData = await ApiBoards.getCardsByBoardId(boardId);
                 console.log('cardsData:', cardsData);
                 setCards(cardsData);
