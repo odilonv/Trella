@@ -10,7 +10,7 @@ function BoardPage(board) {
             flexDirection: 'column',
             margin: "15px"
         }}>
-            <HeadBarComponent title={board.name ?? 'Untilted'} titleFirstButton={'New Board'} />
+            <HeadBarComponent title={board.name ?? 'Untilted'} titleFirstButton={'New Board'} titleSecondtButton={'Add Card'} />
 
             <div style={{
                 display: 'flex',
