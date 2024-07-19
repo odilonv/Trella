@@ -16,7 +16,7 @@ function CardListPage() {
             flexDirection: 'column',
             margin: "15px"
         }}>
-            <HeadBarComponent title={'Tasks'} setBoard={false} />
+            <HeadBarComponent title={'Cards'} setBoard={false} />
             <div
                 className='default-container'
                 style={{
@@ -29,7 +29,7 @@ function CardListPage() {
                     gap: '15px',
                 }}>
                 {cardsData.map(card => (
-                    <CardComponent key={card.id} card={card} />
+                    <CardComponent key={card.id} card={card} assignCard={true} />
                 ))}
             </div>
         </div>

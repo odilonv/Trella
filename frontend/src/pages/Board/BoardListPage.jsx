@@ -15,7 +15,7 @@ function BoardListPage() {
                 flexDirection: 'column',
                 margin: "15px"
             }}>
-            <HeadBarComponent title={'Boards'} setTask={false} />
+            <HeadBarComponent title={'Boards'} setCard={false} />
 
             <div style={{
                 display: 'flex',

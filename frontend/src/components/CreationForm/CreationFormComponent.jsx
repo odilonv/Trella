@@ -2,7 +2,22 @@ import React from 'react';
 import ButtonComponent from '../Button/ButtonComponent';
 import { Divider } from '@mui/material';
 
-function CreationFormComponent({ theme, handleSubmit, name, description, setName, setDescription }) {
+function CreationFormComponent({ theme, handleSubmit, name, description, setName, setDescription, selectedBoards = {}, setSelectedBoards }) {
+    const boards = [
+        { id: '1', name: 'Board 1' },
+        { id: '2', name: 'Board 2' },
+        { id: '3', name: 'Board 3' },
+        { id: '4', name: 'Board 4' },
+        { id: '5', name: 'Board 5' }
+    ];
+
+    const handleBoardSelectionChange = (event) => {
+        const { value, checked } = event.target;
+        setSelectedBoards(prev => ({
+            ...prev,
+            [value]: checked
+        }));
+    };
 
     return (
         <form onSubmit={handleSubmit}
@@ -33,7 +48,7 @@ function CreationFormComponent({ theme, handleSubmit, name, description, setName
             <div
                 style={{ display: 'flex', width: '100%', alignItems: 'center', flexDirection: 'column', gap: '5px' }}
             >
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name">Title:</label>
                 <input
                     className='default-input'
                     id="name"
@@ -56,6 +71,42 @@ function CreationFormComponent({ theme, handleSubmit, name, description, setName
                     required
                 />
             </div>
+            {
+                theme === 'card' &&
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        textAlign: 'center',
+                        height: '100%',
+                        width: '100%',
+                        flexDirection: 'column',
+                        gap: '10px',
+
+                    }}>
+                    <label htmlFor="selectedBoards">Assign this card to a board :</label>
+                    {boards && boards.length > 0 ? (
+                        boards.map((board) => (
+                            <div key={board.id} >
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        value={board.id}
+                                        checked={!!selectedBoards[board.id]}
+                                        onChange={handleBoardSelectionChange}
+                                    />
+                                    {board.name}
+                                </label>
+                            </div>
+                        ))
+                    ) : (
+                        <p>Loading boards...</p>
+                    )}
+
+                </div>
+            }
+
             <ButtonComponent text={`Create ${theme}`} onClick={handleSubmit} margin='0' />
         </form>
     );
