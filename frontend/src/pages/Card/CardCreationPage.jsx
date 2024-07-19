@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CreationFormComponent } from '../../components';
-import {ApiBoards} from "../../services/API/ApiBoards";
-import {ApiCards} from "../../services/API/ApiCards";
+import { ApiBoards } from "../../services/API/ApiBoards";
+import { ApiCards } from "../../services/API/ApiCards";
 
 function CardCreationPage() {
     const [name, setName] = useState('');

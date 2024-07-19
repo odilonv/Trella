@@ -34,6 +34,7 @@ export const CardService = {
     },
 
     updateCard: async (cardId, title, description, boardId, state) => {
+        console.log("cardId, title, description, boardId, state", cardId, title, description, boardId, state);
         const connection = await DatabaseConnection.getInstance();
         await connection.query(
             'UPDATE card SET title = ?, description = ?, state = ? WHERE id = ?',
@@ -43,7 +44,7 @@ export const CardService = {
         console.log("cardId :", cardId);
         console.log("state :", state);
 
-        card = { title: title, description: description, state: state, id: cardId, boardId: boardId }
+        let card = { title: title, description: description, state: state, id: cardId, boardId: boardId }
         console.log("card :", card);
         return card;
     },
