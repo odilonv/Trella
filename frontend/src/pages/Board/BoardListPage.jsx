@@ -43,7 +43,6 @@ function BoardListPage() {
                 width: '100%',
             }}>
                 {boards.map((board, index) => (
-                    console.log(board),
                     <BoardThumbnailComponent key={index} board={board} />
                 ))}
             </div>

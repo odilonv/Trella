@@ -19,7 +19,6 @@ function CardListPage() {
             try {
                 let user = await getLoggedUser();
                 const cardData = await ApiCards.getCardsByUserId(user.id);
-                console.log(cardData);
                 setCardsData(cardData);
                 setIsLoading(false);
             } catch (error) {
