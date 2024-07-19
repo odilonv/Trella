@@ -10,6 +10,15 @@ export const createBoard = async (req, res) => {
     }
 };
 
+export const getAllBoards = async (req, res) => {
+    try {
+        const boards = await BoardService.getAllBoards();
+        res.json(boards);
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+};
+
 
 export const getBoardsByUserId = async (req, res) => {
     const {userId} = req.params;
