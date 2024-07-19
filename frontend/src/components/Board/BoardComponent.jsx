@@ -2,7 +2,7 @@ import React from 'react';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import CardComponent from '../Card/CardComponent';
 
-function BoardComponent({ titleText, colorTitleText, subText, colorSubText, cards, provided }) {
+function BoardComponent({ titleText, colorTitleText, subText, colorSubText, cards, state }) {
     return (
         <div
             className='default-container'
@@ -30,7 +30,7 @@ function BoardComponent({ titleText, colorTitleText, subText, colorSubText, card
                     color: colorSubText ?? 'var(--black)'
                 }}>{subText}</h5>
             }
-            <Droppable droppableId={titleText}>
+            <Droppable droppableId={state.toString()}>
                 {(provided) => (
                     <div
                         ref={provided.innerRef}
@@ -59,7 +59,7 @@ function BoardComponent({ titleText, colorTitleText, subText, colorSubText, card
                                             ...provided.draggableProps.style
                                         }}
                                     >
-                                        <CardComponent key={index} card={card} />
+                                        <CardComponent card={card} />
                                     </div>
                                 )}
                             </Draggable>

@@ -21,16 +21,17 @@ export const ApiCards = {
     },
 
     updateCard: async (cardId, title, description, boardId, state) => {
-        const user = await getLoggedUser();
-        const user_id = user ? user.id : null;
-        const response = await fetch(`${API_URL}/${cardId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ title, description, boardId, user_id, state })
-        });
-        return response.json();
+        console.log('updateCard:', cardId, title, description, boardId, state);
+        // const user = await getLoggedUser();
+        // const user_id = user ? user.id : null;
+        // const response = await fetch(`${API_URL}/${cardId}`, {
+        //     method: 'PUT',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({ title, description, boardId, user_id, state })
+        // });
+        // return response.json();
     },
 
     getCardsByUserId: async (userId) => {

@@ -56,6 +56,7 @@ function BoardPage() {
 
         const sourceState = parseInt(source.droppableId);
         const destinationState = parseInt(destination.droppableId);
+        console.log(destinationState);
 
         if (sourceState === destinationState && source.index === destination.index) return;
 
@@ -63,6 +64,9 @@ function BoardPage() {
         const updatedCard = { ...movedCard, state: destinationState };
 
         // Update card state on server
+        console.log('updatedCard:', updatedCard);
+        console.log('board:', board);
+
         await ApiCards.updateCard(updatedCard.id, updatedCard.title, updatedCard.description, board.id, updatedCard.state);
 
         // Update card state in local state
@@ -96,6 +100,7 @@ function BoardPage() {
                             {Object.keys(stateNames).map(state => (
                                 <BoardComponent
                                     key={state}
+                                    state={state} // Pass state ID here
                                     titleText={stateNames[state]}
                                     cards={cards.filter(card => card.state === parseInt(state))}
                                 />
