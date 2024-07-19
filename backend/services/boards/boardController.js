@@ -3,37 +3,45 @@ import { v4 as uuidv4 } from 'uuid';
 import { BoardService } from './boardService.js';
 
 // Créer un board
-export const createBoard = (req, res) => {
-    const { name, description } = req.body;
-    const newBoard = BoardService.createBoard(name, description);
-    res.status(201).json(newBoard);
+export const createBoard = async (req, res) => {
+    const { name, user_id} = req.body;
+    try {
+        const newBoard = await BoardService.createBoard(name, user_id);
+        res.status(201).json(newBoard);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
 };
 
 // Obtenir un board par ID
-export const getBoardById = (req, res) => {
+export const getBoardById = async (req, res) => {
     const { boardId } = req.params;
-    const board = BoardService.getBoardById(boardId);
-    if (board) {
+    try {
+        const board = await BoardService.getBoardById(boardId);
         res.json(board);
-    } else {
-        res.status(404).json({ message: 'Board not found' });
+    } catch (error) {
+        res.status(404).json({ message: error.message });
     }
 };
 
 // Mettre à jour les détails d'un board
-export const updateBoard = (req, res) => {
+export const updateBoard = async (req, res) => {
     const { boardId } = req.params;
-    const { name, description } = req.body;
-    const updatedBoard = BoardService.updateBoard(boardId, name, description);
-    if (updatedBoard) {
+    const { name, user_id } = req.body;
+    try {
+        const updatedBoard = await BoardService.updateBoard(boardId, name, user_id);
         res.json(updatedBoard);
-    } else {
-        res.status(404).json({ message: 'Board not found' });
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
 };
 
-export const getCardsByBoardId = (req, res) => {
+export const getCardsByBoardId = async (req, res) => {
     const { boardId } = req.params;
-    const cards = BoardService.getCardsByBoardId(boardId);
-    res.json(cards);
-}
+    try {
+        const cards = await BoardService.getCardsByBoardId(boardId);
+        res.json(cards);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};

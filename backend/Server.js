@@ -26,7 +26,6 @@ import { startBoardsService } from './services/boards/index.js'; // Exemple si v
 import { startCardsService } from './services/cards/index.js';
 import DatabaseConnection from "./models/DatabaseConnection.js"; // Exemple si vous avez un service cards
 
-DatabaseConnection.initDatabase();
 // Démarrage des services
 startUsersService();
 startBoardsService(); // Démarrez le service des tableaux si nécessaire
