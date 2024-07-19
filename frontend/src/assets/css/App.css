@@ -112,17 +112,6 @@ header {
     z-index: 20;
 }
 
-.header-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    width: 100%;
-    min-height: 8vh;
-    z-index: 20;
-}
-
 .app-header {
     display: flex;
     background-color: var(--white);
@@ -182,31 +171,6 @@ footer {
     position: relative;
 }
 
-footer.large-footer {
-    height: 65vh;
-    width: 100%;
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.footer-column {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    gap: 5%;
-}
-
-.footer-column>a {
-    color: white;
-    opacity: 0.7;
-}
-
-.footer-column>h3 {
-    color: white;
-}
 
 .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-adornedStart.MuiInputBase-adornedEnd.css-15mfqiu-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: var(--main-color) !important;
@@ -242,87 +206,10 @@ footer.large-footer {
     }
 }
 
-.hidden {
-    display: none;
-}
-
-.flex-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 15vh;
-}
-
-
-.noSelect {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
-    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
-    outline: none !important;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: hsla(0, 0, 0, 0);
-    -webkit-tap-highlight-color: #00000000;
-    -webkit-tap-highlight-color: #0000;
-}
-
-.noSelect:focus {
-    outline: none !important;
-    outline: none;
-    box-shadow: none;
-}
-
-.filter-entry {
-    outline: none;
-    border: none;
-    text-align: center;
-    font-weight: 500;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    caret-color: transparent;
-    background-color: transparent;
-}
-
-.filter-entry-active {
-    color: var(--main-color);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    transition: transform 0.3s ease;
-}
-
-.information-sticker {
-    display: flex;
-    border-radius: 20px;
-    padding: 3px 13px;
-    font-size: 1em;
-}
-
 .header-link-container {
     margin-right: auto;
     margin-left: 50px;
     gap: 15px;
-}
-
-.live-counter-badge {
-    position: absolute;
-    top: -7px;
-    right: -13px;
-    background-color: var(--main-color);
-    color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 12px;
-    /* font-weight: bold; */
-    line-height: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .header-link {
@@ -332,25 +219,6 @@ footer.large-footer {
 
 .header-link:hover {
     color: var(--main-color);
-}
-
-.app-header .balance-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    background-color: var(--white);
-    border: 1px solid var(--main-color);
-    color: var(--main-color);
-    padding: 1px 10px;
-    border-radius: 5px;
-    margin: 0 8px;
-    height: 38px;
-}
-
-.chip {
-    margin-left: 5px;
-    width: 17px;
 }
 
 .default-container {
@@ -422,49 +290,6 @@ footer.large-footer {
     top: 0;
     right: 0;
     cursor: pointer;
-}
-
-.shiny-text {
-    background: radial-gradient(circle, var(--main-color), var(--lighter-color));
-    background-clip: text;
-    color: transparent;
-    animation: shiny-text 3s linear infinite;
-    background-size: 200% 200%;
-}
-
-@keyframes shiny-text {
-
-    0% {
-        background-position: 0% 0%;
-    }
-
-    50% {
-        background-position: 100% 100%;
-    }
-
-    100% {
-        background-position: 0% 0%;
-    }
-}
-
-.overlapping-images {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.overlapping-images img {
-    position: absolute;
-}
-
-.filter-container {
-    margin: 20px 0;
-    padding: 7px 10px;
-    column-gap: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-self: start;
 }
 
 ::-webkit-scrollbar {

@@ -2,7 +2,7 @@ import React from "react";
 
 function RectangleLoaderComponent({ minWidth, minHeight, style = null }) {
     return (
-        <div className="colorFade" style={{
+        <div className="color-fade" style={{
             minWidth: `${minWidth}`,
             minHeight: `${minHeight}`,
             height: `${minHeight}`,
