@@ -1,11 +1,11 @@
 // frontend/src/services/API/ApiBoards.js
-import { getLoggedUser } from './ApiUserSession';
+import {getLoggedUser} from './ApiUserSession';
 
 const API_URL = 'http://localhost:5002/boards'; // Remplacez par l'URL de votre API
 
 export const ApiBoards = {
     // Créer un board
-    createBoard: async (name) => {
+    createBoard: async (name, description) => {
         const user = await getLoggedUser();
         const user_id = user ? user.id : null;
         if (!user_id) {
@@ -16,9 +16,9 @@ export const ApiBoards = {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, user_id })
+            body: JSON.stringify({ name, description, user_id })
         });
-        return response.json();
+        return await response.json();
     },
 
     getBoardsByUserId: async (userId) => {
