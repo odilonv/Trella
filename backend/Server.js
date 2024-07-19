@@ -13,20 +13,13 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use(session({
-    secret: 'your secret key',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }
-}));
+
 
 // Importez d'autres routes principales si nécessaire
 import { startUsersService } from './services/users/index.js';
 import { startBoardsService } from './services/boards/index.js'; // Exemple si vous avez un service boards
 import { startCardsService } from './services/cards/index.js';
-import DatabaseConnection from "./models/DatabaseConnection.js"; // Exemple si vous avez un service cards
 
-// Démarrage des services
 startUsersService();
 startBoardsService(); // Démarrez le service des tableaux si nécessaire
 startCardsService(); // Démarrez le service des cartes si nécessaire

@@ -1,9 +1,14 @@
-// backend/services/boards/index.js
 import express from 'express';
+import cors from 'cors';
 import { boardRouter } from './boardRoutes.js';
 
 const app = express();
 const PORT = 5002; // Port pour le service boards
+
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
 
 app.use(express.json());
 

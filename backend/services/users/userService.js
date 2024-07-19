@@ -1,15 +1,18 @@
-// backend/services/users/userService.js
-import { v4 as uuidv4 } from 'uuid';
 import DatabaseConnection from '../../models/DatabaseConnection.js';
+import bcrypt from 'bcrypt';
+import User from '../../models/User.js';
 
 export const UserService = {
     // Créer un utilisateur
     createUser: async (firstName, lastName, email, password) => {
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
         const newUser = {
             firstName,
             lastName,
             email,
-            password // Note: Vous devriez hasher ce mot de passe avant de l'enregistrer
+            password: hashedPassword
         };
 
         const connection = await DatabaseConnection.getInstance();
@@ -25,25 +28,26 @@ export const UserService = {
         return newUser;
     },
 
-    // Obtenir un utilisateur par ID
-    getUserById: async (userId) => {
+    // Authentifier un utilisateur
+    loginUser: async (email, password) => {
         const connection = await DatabaseConnection.getInstance();
-        const [rows] = await connection.query(
-            'SELECT * FROM user WHERE id = ?',
-            [userId]
-        );
-
-        return rows[0];
+        const [results] = await connection.query('SELECT * FROM user WHERE email = ?', [email]);
+        if (results.length > 0) {
+            const userData = results[0];
+            const hashedPassword = userData.password;
+            const passwordMatch = await bcrypt.compare(password, hashedPassword);
+            if (passwordMatch) {
+                return User.fromDatabase(userData);
+            }
+        }
+        return null;
     },
 
-    // Mettre à jour les détails d'un utilisateur
-    updateUser: async (userId, firstName, lastName, email) => {
+    // Supprimer un utilisateur
+    deleteUser: async (userId) => {
         const connection = await DatabaseConnection.getInstance();
-        await connection.query(
-            'UPDATE user SET firstName = ?, lastName = ?, email = ? WHERE id = ?',
-            [firstName, lastName, email, userId]
-        );
-
-        return this.getUserById(userId);
+        const [result] = await connection.query('DELETE FROM user WHERE id = ?', [userId]);
+        return result.affectedRows > 0; // Retourne true si un utilisateur a été supprimé, false sinon
     }
+
 };

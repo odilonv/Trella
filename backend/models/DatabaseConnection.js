@@ -40,8 +40,8 @@ class DatabaseConnection {
                 database: 'trella_db',
             });
 
-            await this.dropTables(connection);
-            await this.createTables(connection);
+            // await this.dropTables(connection);
+            // await this.createTables(connection);
 
             return connection;
         } catch (err) {
