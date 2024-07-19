@@ -22,6 +22,12 @@ export const BoardService = {
         return newBoard;
     },
 
+    getAllBoards: async () => {
+        const connection = await DatabaseConnection.getInstance();
+        const [rows] = await connection.query('SELECT * FROM board');
+        return rows;
+    },
+
     getBoardsByUserId: async (userId) => {
         const connection = await DatabaseConnection.getInstance();
         const [rows] = await connection.query(

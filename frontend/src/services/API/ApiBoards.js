@@ -31,6 +31,12 @@ export const ApiBoards = {
     },
 
     // Obtenir un board par ID
+    getAllBoards: async () => {
+        const response = await fetch(`${API_URL}/`);
+        return response.json();
+    },
+
+    // Obtenir un board par ID
     getBoardById: async (boardId) => {
         const response = await fetch(`${API_URL}/${boardId}`);
         return response.json();

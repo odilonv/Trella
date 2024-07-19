@@ -53,62 +53,34 @@ function CardComponent({ card, colorTitleText, colorSubText, assignCard = false 
                     display: 'flex',
                     overflowY: 'auto',
                     overflowX: 'hidden',
+                    gap: '20px',
                 }}>
-                <div style={{ position: 'relative' }}>
-                    {isEditing ? (
-                        <input
-                            type="text"
-                            value={title}
-                            onChange={handleTitleChange}
-                            style={{
-                                fontSize: '0.9em',
-                                fontWeight: '600',
-                                lineHeight: '110%',
-                                width: '100%',
-                                color: colorTitleText ?? 'var(--black)',
-                                border: 'none',
-                                background: 'transparent',
-                                outline: 'none'
-                            }}
-                        />
-                    ) : (
-                        <h1 style={{
-                            fontSize: '0.9em',
-                            fontWeight: '600',
-                            lineHeight: '110%',
-                            width: '100%',
-                            color: colorTitleText ?? 'var(--black)'
-                        }}>{title}</h1>
-                    )}
-
-                    {isEditing ? (
-                        <textarea
-                            value={description}
-                            onChange={handleDescriptionChange}
-                            style={{
-                                fontSize: '0.7em',
-                                fontWeight: 'initial',
-                                textAlign: 'left',
-                                color: colorSubText ?? 'var(--black)',
-                                border: 'none',
-                                background: 'transparent',
-                                outline: 'none',
-                                resize: 'none',
-                                width: '100%',
-                                minHeight: '2em'
-                            }}
-                        />
-                    ) : (
-                        card.description && <h5 style={{
-                            fontSize: '0.7em',
-                            fontWeight: 'initial',
-                            textAlign: 'left',
-                            color: colorSubText ?? 'var(--black)',
-                            overflowY: 'auto',
-                            overflowX: 'hidden',
-                        }}>{description}</h5>
-                    )}
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        width: '100%',
+                        alignItems: 'center',
+                    }}>
+                    <h1 style={{
+                        fontSize: '0.9em',
+                        fontWeight: '600',
+                        lineHeight: '110%',
+                        width: '100%',
+                        color: colorTitleText ?? 'var(--black)'
+                    }}>{card.title}</h1>
+                    <EditRoundedIcon style={{ fill: 'var(--black)', cursor: 'pointer', fontSize: '1em' }} />
                 </div>
+                {
+                    card.description && <h5 style={{
+                        fontSize: '0.7em',
+                        fontWeight: 'initial',
+                        textAlign: 'left',
+                        color: colorSubText ?? 'var(--black)',
+                        overflowY: 'auto',
+                        overflowX: 'hidden',
+                    }}>{card.description}</h5>
+                }
             </div>
 
             {assignCard && (

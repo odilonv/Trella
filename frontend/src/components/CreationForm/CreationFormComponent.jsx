@@ -1,8 +1,18 @@
 import React from 'react';
 import ButtonComponent from '../Button/ButtonComponent';
 import { Divider } from '@mui/material';
+import {ApiBoards} from "../../services/API/ApiBoards";
 
-function CreationFormComponent({ theme, handleSubmit, name, description, setName, setDescription, boardId }) {
+function CreationFormComponent({ theme, handleSubmit, name, description, setName, setDescription, boards, selectedBoards = {}, setSelectedBoards }) {
+
+    const handleBoardSelectionChange = (event) => {
+        const { value, checked } = event.target;
+        setSelectedBoards(prev => ({
+            ...prev,
+            [value]: checked
+        }));
+    };
+
     return (
         <form onSubmit={handleSubmit}
               className='default-container'
@@ -55,6 +65,47 @@ function CreationFormComponent({ theme, handleSubmit, name, description, setName
                     required
                 />
             </div>
+            {
+                theme === 'card' &&
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        textAlign: 'center',
+                        height: '100%',
+                        width: '100%',
+                        flexDirection: 'column',
+                        gap: '10px',
+
+                    }}>
+                    <label htmlFor="selectedBoards">Assign this card to a board :</label>
+                    {boards && boards.length > 0 ? (
+                        boards.map((board) => (
+                            <div key={board.id} >
+                                <label
+                                    style={{
+                                        display: 'flex',
+                                        gap: '5px',
+                                        alignItems: 'center',
+                                        justifyContent: 'start',
+                                    }}>
+                                    <input
+                                        type="checkbox"
+                                        value={board.id}
+                                        checked={!!selectedBoards[board.id]}
+                                        onChange={handleBoardSelectionChange}
+                                    />
+                                    <>{board.name}</>
+                                </label>
+                            </div>
+                        ))
+                    ) : (
+                        <p>Loading boards...</p>
+                    )}
+
+                </div>
+            }
 
             <ButtonComponent text={`Create ${theme}`} onClick={handleSubmit} margin='0' />
         </form>
