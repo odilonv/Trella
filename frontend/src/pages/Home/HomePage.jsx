@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import HeadTextComponent from '../../components/HeadText/HeadTextComponent';
+import HeadTextComponent from '../../components/Head/HeadTextComponent';
 import ButtonComponent from '../../components/Button/ButtonComponent';
 import trello from '../../assets/img/TrelloUICollage.png';
 import { UserContext } from '../../contexts/UserContext';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardComponent } from '../../components';
-import HeadBarComponent from '../../components/HeadBar/HeadBarComponent';
+import HeadBarComponent from '../../components/Head/HeadBarComponent';
 
 function CardListPage() {
     const cardsData = [
