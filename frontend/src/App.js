@@ -13,8 +13,7 @@ import {
   BoardPage,
   BoardListPage,
   BoardCreationPage,
-  CardCreationPage,
-  CardListPage
+  CardCreationPage
 } from './pages';
 import { NotificationProvider, UserProvider } from './contexts';
 
@@ -30,7 +29,6 @@ function App() {
             <Route path="/boards/:id" element={<BoardPage />} />
             <Route path="/boards/create" element={<BoardCreationPage />} />
             <Route path="/boards" element={<BoardListPage />} />
-            <Route path="/cards" element={<CardListPage />} />
             <Route path="/cards/create" element={<CardCreationPage />} />
             <Route path="/logout" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
