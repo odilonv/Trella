@@ -16,13 +16,15 @@ function BoardPage() {
     const [board, setBoard] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [cards, setCards] = useState([]);
+    const [boardId, setBoardId] = useState('');
 
     useEffect(() => {
         const fetchBoard = async () => {
             await requireLoggedUser();
             try {
-                const boardId = window.location.pathname.split('/').pop();
-                const boardData = await ApiBoards.getBoardById(boardId);
+                let urlBoardId = window.location.pathname.split('/').pop();
+                setBoardId(urlBoardId);
+                const boardData = await ApiBoards.getBoardById(urlBoardId);
                 setBoard(boardData);
                 setIsLoading(false);
             } catch (error) {
@@ -81,7 +83,7 @@ function BoardPage() {
                 }}>
                     <HeadBarComponent
                         title={board.name}
-                        titleFirstButton={'New Board'}
+                        boardId={boardId}
                         titleSecondtButton={'Add Card'}
                     />
 
