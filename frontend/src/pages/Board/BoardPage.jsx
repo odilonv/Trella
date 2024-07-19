@@ -40,7 +40,6 @@ function BoardPage() {
             try {
                 const boardId = window.location.pathname.split('/').pop();
                 const cardsData = await ApiBoards.getCardsByBoardId(boardId);
-                console.log('cardsData:', cardsData);
                 setCards(cardsData);
             } catch (error) {
                 console.error('Error fetching cards:', error);
