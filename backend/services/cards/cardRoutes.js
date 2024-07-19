@@ -9,4 +9,3 @@ export const cardRouter = express.Router();
 cardRouter.post('/', createCard);
 cardRouter.get('/board/:boardId', getCardsByBoardId);
 cardRouter.put('/:cardId', updateCard);
-cardRouter.get('/card/:cardId', getCardsByBoardId);
