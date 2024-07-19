@@ -2,11 +2,17 @@
 import { v4 as uuidv4 } from 'uuid';
 import { CardService } from './cardService.js';
 
-// Créer une card
-export const createCard = (req, res) => {
-    const { title, description } = req.body;
-    const newCard = CardService.createCard(title, description);
-    res.status(201).json(newCard);
+export const createCard = async (req, res) => {
+    const { title, description, board_id, user_id } = req.body;
+    const result = await CardService.createCard(title, description, board_id, user_id);
+
+    if (result.error) {
+        // Si une erreur est présente, renvoyez un statut 400 avec le message d'erreur
+        res.status(400).json({ error: result.error });
+    } else {
+        // Sinon, renvoyez un statut 201 avec la nouvelle carte
+        res.status(201).json(result);
+    }
 };
 
 // Obtenir une card par ID
