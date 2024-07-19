@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `card` (
     description TEXT,
     board_id INT,
     user_id INT,
-    state INT,
+    state INT DEFAULT 1,
     FOREIGN KEY (board_id) REFERENCES board(id),
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
