@@ -48,6 +48,16 @@ export const UserService = {
         const connection = await DatabaseConnection.getInstance();
         const [result] = await connection.query('DELETE FROM user WHERE id = ?', [userId]);
         return result.affectedRows > 0; // Retourne true si un utilisateur a été supprimé, false sinon
+    },
+
+    getUserById: async (id) => {
+        const connection = await DatabaseConnection.getInstance();
+        const [results] = await connection.query('SELECT * FROM user WHERE id = ?', [id]);
+        if (results.length > 0) {
+            const userData = results[0];
+            return User.fromDatabase(userData);
+        }
+        return null;
     }
 
 };

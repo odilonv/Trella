@@ -1,5 +1,20 @@
 import { UserService } from './userService.js';
 
+export const IdUser = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const user = await UserService.getUserById(id);
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
+    }
+};
+
 export const createUser = async (req, res) => {
     const { firstName, lastName, email, password } = req.body.user;
     try {
