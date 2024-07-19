@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CreationFormComponent } from '../../components';
+import {ApiBoards} from "../../services/API/ApiBoards";
 
 function BoardCreationPage() {
     const [name, setName] = useState('');
@@ -9,8 +10,7 @@ function BoardCreationPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Exemple: await createBoard({ name, description });
-        console.log('Board created:', { name, description });
+        let response = await ApiBoards.createBoard(name, description);
         navigate('/boards');
     };
 
