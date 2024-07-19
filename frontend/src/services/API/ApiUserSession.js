@@ -66,7 +66,7 @@ async function getLoggedUser() {
 
 
 export async function getLoginStatus() {
-    const response = await fetch('http://localhost:5001/api/data/session', {
+    const response = await fetch('http://localhost:5001/users/session', {
         method: 'GET',
         credentials: 'include',
     });
@@ -77,7 +77,7 @@ async function requireLoggedUser() {
     if (await getLoginStatus() === 200) {
         return true;
     } else {
-        // window.location.href = `/login`;
+        window.location.href = `/login`;
     }
 }
 

@@ -21,6 +21,15 @@ export const ApiBoards = {
         return response.json();
     },
 
+    getBoardsByUserId: async (userId) => {
+        const response = await fetch(`${API_URL}/${userId}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.text();
+        return data ? JSON.parse(data) : {};
+    },
+
     // Obtenir un board par ID
     getBoardById: async (boardId) => {
         const response = await fetch(`${API_URL}/${boardId}`);

@@ -7,7 +7,10 @@ export const BoardService = {
     // Créer un board
     createBoard: async (name, description, user_id) => {
         // Vérifie si l'utilisateur existe
-        await UserService.getUserById(user_id);
+        const user = await UserService.getUserById(user_id);
+        if (!user) {
+            return { error: 'User ID does not exist' };
+        }
 
         const newBoard = {
             name,
@@ -22,6 +25,16 @@ export const BoardService = {
         );
 
         return newBoard;
+    },
+
+    getBoardsByUserId: async (userId) => {
+        const connection = await DatabaseConnection.getInstance();
+        const [rows] = await connection.query(
+            'SELECT * FROM board WHERE user_id = ?',
+            [userId]
+        );
+
+        return rows;
     },
 
     // Obtenir un board par ID
