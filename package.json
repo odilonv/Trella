@@ -1,7 +1,7 @@
 {
   "name": "trella",
   "version": "1.0.0",
-  "description": "Application web de ",
+  "description": "Stop Trello, now start manage your cards with Trella !",
   "main": "server.js",
   "scripts": {
     "start": "node backend/Server.js",
@@ -13,7 +13,7 @@
     "database": "node start-server.js"
   },
   "author": "ESCLAPEZ Loïc, DIMECK Raphaël, SALAÜN Kerrian, VIDAL Odilon",
-  "license": "Non spécifiée",
+  "license": "MIT License",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",

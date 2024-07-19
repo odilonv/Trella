@@ -7,7 +7,6 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
 import IdentityIcon from '@mui/icons-material/PersonRounded';
 import ContactIcon from '@mui/icons-material/CallRounded';
-import SecurityIcon from '@mui/icons-material/LockRounded';
 import { UserContext } from "../../contexts/UserContext";
 
 
