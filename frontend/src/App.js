@@ -29,7 +29,7 @@ function App() {
             <Route path="/boards/:id" element={<BoardPage />} />
             <Route path="/boards/create" element={<BoardCreationPage />} />
             <Route path="/boards" element={<BoardListPage />} />
-            <Route path="/cards/create" element={<CardCreationPage />} />
+            <Route path="/cards/create/:boardId" element={<CardCreationPage />} />
             <Route path="/logout" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/verifyEmail/:token" element={<VerifyEmailPage />} />

@@ -1,30 +1,21 @@
 import React from 'react';
 import ButtonComponent from '../Button/ButtonComponent';
 import { Divider } from '@mui/material';
-import {ApiBoards} from "../../services/API/ApiBoards";
 
 function CreationFormComponent({ theme, handleSubmit, name, description, setName, setDescription, boards, selectedBoards = {}, setSelectedBoards }) {
 
-    const handleBoardSelectionChange = (event) => {
-        const { value, checked } = event.target;
-        setSelectedBoards(prev => ({
-            ...prev,
-            [value]: checked
-        }));
-    };
-
     return (
         <form onSubmit={handleSubmit}
-              className='default-container'
-              style={{
-                  display: "flex",
-                  height: "100%",
-                  margin: "15px",
-                  padding: "15px",
-                  gap: "30px",
-                  alignItems: "center",
-                  flexDirection: "column",
-              }}
+            className='default-container'
+            style={{
+                display: "flex",
+                height: "100%",
+                margin: "15px",
+                padding: "15px",
+                gap: "30px",
+                alignItems: "center",
+                flexDirection: "column",
+            }}
         >
             <div
                 style={{
@@ -79,30 +70,7 @@ function CreationFormComponent({ theme, handleSubmit, name, description, setName
                         gap: '10px',
 
                     }}>
-                    <label htmlFor="selectedBoards">Assign this card to a board :</label>
-                    {boards && boards.length > 0 ? (
-                        boards.map((board) => (
-                            <div key={board.id} >
-                                <label
-                                    style={{
-                                        display: 'flex',
-                                        gap: '5px',
-                                        alignItems: 'center',
-                                        justifyContent: 'start',
-                                    }}>
-                                    <input
-                                        type="checkbox"
-                                        value={board.id}
-                                        checked={!!selectedBoards[board.id]}
-                                        onChange={handleBoardSelectionChange}
-                                    />
-                                    <>{board.name}</>
-                                </label>
-                            </div>
-                        ))
-                    ) : (
-                        <p>Loading boards...</p>
-                    )}
+
 
                 </div>
             }
