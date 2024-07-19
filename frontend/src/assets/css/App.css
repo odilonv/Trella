@@ -360,6 +360,16 @@ footer.large-footer {
     border-radius: 10px;
 }
 
+.default-input {
+    color: var(--black);
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+    border: 1px solid var(--main-color);
+    padding: 5px;
+    min-width: 400px;
+}
+
 .home-container {
     padding: 8%;
     align-items: center;

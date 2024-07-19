@@ -4,6 +4,8 @@ export { default as FooterComponent } from './Footer/FooterComponent';
 export { default as LargeFooterComponent } from './LargeFooter/LargeFooterComponent';
 export { default as HeadTextComponent } from './HeadText/HeadTextComponent';
 export { default as BoardComponent } from './Board/BoardComponent';
+export { default as BoardThumbnailComponent } from './Board/BoardThumbnailComponent';
+export { default as CreationFormComponent } from './CreationForm/CreationFormComponent';
 export { default as CardComponent } from './Card/CardComponent';
 export { default as ButtonComponent } from './Button/ButtonComponent';
 export { default as RadioButtonComponent } from './Button/RadioButtonComponent';

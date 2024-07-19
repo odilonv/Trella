@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonComponent from '../Button/ButtonComponent';
 
-function HeadBarComponent({ title }) {
+function HeadBarComponent({ title, titleFirstButton, setBoard = true, setTask = true }) {
     return (
         <div
             className='default-container'
@@ -15,8 +15,8 @@ function HeadBarComponent({ title }) {
             }}>
             <h2>{title}</h2>
             <div>
-                <ButtonComponent text='Create Board' href='/create-card' margin='0' color={'var(--main-darker-color)'} />
-                <ButtonComponent text='Create Task' href='/create-card' margin='0 0 0 10px' />
+                {setBoard && <ButtonComponent text={titleFirstButton ?? 'Create Board'} href='/boards/create' margin='0' color={'var(--main-darker-color)'} />}
+                {setTask && <ButtonComponent text='Create Task' href='/cards/create' margin='0 0 0 10px' />}
             </div>
         </div>
     );

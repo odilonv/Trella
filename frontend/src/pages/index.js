@@ -1,6 +1,9 @@
 export { default as HomePage } from './Home/HomePage';
-export { default as TasksPage } from './Tasks/TasksPage';
+export { default as CardListPage } from './Card/CardListPage';
+export { default as CardCreationPage } from './Card/CardCreationPage';
 export { default as BoardPage } from './Board/BoardPage';
+export { default as BoardCreationPage } from './Board/BoardCreationPage';
+export { default as BoardListPage } from './Board/BoardListPage';
 export { default as LoginPage } from './Login/LoginPage';
 export { default as SignUpPage } from './SignUp/SignUpPage';
 export { default as SettingsPage } from './Settings/SettingsPage';

@@ -13,7 +13,10 @@ import {
   UserPage,
   VerifyEmailPage,
   BoardPage,
-  TasksPage
+  BoardListPage,
+  BoardCreationPage,
+  CardCreationPage,
+  CardListPage
 } from './pages';
 import { NotificationProvider, UserProvider } from './contexts';
 
@@ -26,8 +29,11 @@ function App() {
           <Routes>
             <Route exact path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
-            <Route path="/board" element={<BoardPage />} />
-            <Route path="/tasks" element={<TasksPage />} />
+            <Route path="/boards/:id" element={<BoardPage />} />
+            <Route path="/boards/create" element={<BoardCreationPage />} />
+            <Route path="/boards" element={<BoardListPage />} />
+            <Route path="/cards" element={<CardListPage />} />
+            <Route path="/cards/create" element={<CardCreationPage />} />
             <Route path="/logout" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/verifyEmail/:token" element={<VerifyEmailPage />} />
