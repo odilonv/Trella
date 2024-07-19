@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
-import {  ModalComponent, UserInfoComponent, UserInfoEntryComponent } from '../../components';
+import { ModalComponent, UserInfoComponent, UserInfoEntryComponent } from '../../components';
 import { getLoggedUser, logout, requireLoggedUser } from '../../services/API/ApiUserSession';
-import UserInfoCategoryComponent from "../../components/UserInfo/UserInfoCategoryComponent";
-import { Divider} from "@mui/material";
+import UserInfoCategoryComponent from "../../components/User/UserInfoCategoryComponent";
+import { Divider } from "@mui/material";
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
 import IdentityIcon from '@mui/icons-material/PersonRounded';

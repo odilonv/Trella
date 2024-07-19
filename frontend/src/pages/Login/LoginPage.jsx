@@ -84,7 +84,7 @@ function LoginPage() {
                     </div>
                 </form>
                 <Divider style={{ margin: '24px 0' }} />
-                <p className="form__hint"><span style={{ opacity: 0.5 }}>Pas encore de compte ?</span> &nbsp;
+                <p className="form-hint"><span style={{ opacity: 0.5 }}>Pas encore de compte ?</span> &nbsp;
                     <a className="form__link" href="/signUp" style={{ textDecoration: 'underline' }}>Inscrivez vous</a>
                 </p>
             </div>

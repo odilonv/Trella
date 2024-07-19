@@ -1,9 +1,3 @@
-.user-heading {
-    margin: 0 0 20px 0;
-    color: var(--main-color);
-    align-self: start;
-}
-
 .user-details {
     display: flex;
     flex-direction: column;
@@ -51,42 +45,9 @@
     font-weight: 500;
 }
 
-.user-details-entry-button {
-    background-color: var(--main-color);
-    color: white;
-    width: 200px;
-    height: 50px;
-    margin-right: 30px;
-    border: none;
-    border-radius: 10px;
-    padding: 5px 10px;
-    font-size: 1em;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    filter: drop-shadow(0 0 10px var(--shadow-color));
-}
-
 .user-details-entry-value {
     font-size: 0.8em;
     font-weight: 400;
-}
-
-.user-details-edit {
-    align-self: end;
-    justify-self: end;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.user-details-edit img {
-    color: white;
-}
-
-.user-details-edit:hover {
-    cursor: pointer;
 }
 
 .manage-account-container {
