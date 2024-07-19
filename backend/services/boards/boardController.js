@@ -15,6 +15,7 @@ export const getBoardsByUserId = async (req, res) => {
     const {userId} = req.params;
     try {
         const boards = await BoardService.getBoardsByUserId(userId);
+        console.log(boards);
         res.json(boards);
     } catch (error) {
         res.status(400).json({message: error.message});

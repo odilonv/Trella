@@ -22,7 +22,7 @@ export const ApiBoards = {
     },
 
     getBoardsByUserId: async (userId) => {
-        const response = await fetch(`${API_URL}/${userId}`);
+        const response = await fetch(`${API_URL}/user/${userId}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
