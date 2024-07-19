@@ -49,8 +49,6 @@ function UserPage() {
                     <UserInfoCategoryComponent entryLabel="Identité" icon={<IdentityIcon />} />
                     <Divider />
                     <UserInfoCategoryComponent entryLabel="Contact" icon={<ContactIcon />} />
-                    <Divider />
-                    <UserInfoCategoryComponent entryLabel="Sécurité" icon={<SecurityIcon />} />
                 </div>
                 <div className="manage-account-container">
                     <div className="manage-account-button" onClick={handleLogout}>Se déconnecter<LogoutRoundedIcon />
