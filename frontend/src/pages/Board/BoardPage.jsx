@@ -40,7 +40,6 @@ function BoardPage() {
             try {
                 const boardId = window.location.pathname.split('/').pop();
                 const cardsData = await ApiBoards.getCardsByBoardId(boardId);
-                console.log('cardsData:', cardsData);
                 setCards(cardsData);
             } catch (error) {
                 console.error('Error fetching cards:', error);
@@ -58,7 +57,6 @@ function BoardPage() {
 
         const sourceState = parseInt(source.droppableId);
         const destinationState = parseInt(destination.droppableId);
-        console.log(destinationState);
 
         if (sourceState === destinationState && source.index === destination.index) return;
 
@@ -66,8 +64,6 @@ function BoardPage() {
         const updatedCard = { ...movedCard, state: destinationState };
 
         // Update card state on server
-        console.log('updatedCard:', updatedCard);
-        console.log('board:', board);
 
         await ApiCards.updateCard(updatedCard.id, updatedCard.title, updatedCard.description, board.id, updatedCard.state);
 

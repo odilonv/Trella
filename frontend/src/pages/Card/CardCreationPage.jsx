@@ -14,7 +14,6 @@ function CardCreationPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let response = await ApiCards.createCard(name, description, boardId);
-        console.log(response);
         // navigate('/boards');
     };
 

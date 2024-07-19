@@ -20,7 +20,6 @@ function ModalComponent({ open, handleClose, style }) {
             const response = await fetch('http://localhost:5001/users/session');
             const data = await response.json();
             if (response.ok) {
-                console.log(data.userId)
                 setUserId(data.userId);
             } else {
                 triggerNotification(data.error, 'error');
@@ -45,7 +44,6 @@ function ModalComponent({ open, handleClose, style }) {
                     triggerNotification('User ID not found.', 'error');
                     return;
                 }
-                console.log("USER ID :", userId);
                 const response = await deleteUser(userId, password); // Pass userId and password to the deleteUser function
                 const json = await response.json();
                 if (response.ok) {
