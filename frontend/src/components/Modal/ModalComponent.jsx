@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Modal as MuiModal, Typography } from '@mui/material';
 import { ButtonComponent, InputPasswordComponent } from '../../components';
 import { deleteUser } from '../../services/API/ApiUserSession';
@@ -6,7 +6,30 @@ import { useNotification } from '../../contexts/NotificationContext';
 
 function ModalComponent({ open, handleClose, style }) {
     const [password, setPassword] = useState('');
+    const [userId, setUserId] = useState(null);
     const { triggerNotification } = useNotification();
+
+    useEffect(() => {
+        if (open) {
+            fetchUserId();
+        }
+    }, [open]);
+
+    const fetchUserId = async () => {
+        try {
+            const response = await fetch('http://localhost:5001/users/session');
+            const data = await response.json();
+            if (response.ok) {
+                console.log(data.userId)
+                setUserId(data.userId);
+            } else {
+                triggerNotification(data.error, 'error');
+            }
+        } catch (error) {
+            console.error(error);
+            triggerNotification('Unable to fetch user ID', 'error');
+        }
+    };
 
     const deleteAccount = async () => {
         let warningMessage = document.getElementById('warningMessage');
@@ -18,7 +41,12 @@ function ModalComponent({ open, handleClose, style }) {
                     triggerNotification('Le mot de passe est requis.', 'error');
                     return;
                 }
-                const response = await deleteUser(password);
+                if (!userId) {
+                    triggerNotification('User ID not found.', 'error');
+                    return;
+                }
+                console.log("USER ID :", userId);
+                const response = await deleteUser(userId, password); // Pass userId and password to the deleteUser function
                 const json = await response.json();
                 if (response.ok) {
                     window.location.href = '/';
@@ -27,7 +55,7 @@ function ModalComponent({ open, handleClose, style }) {
                 }
             } catch (error) {
                 console.error(error);
-                triggerNotification(error.Error, 'error');
+                triggerNotification('Failed to delete account', 'error');
             }
         }
     };
@@ -50,7 +78,7 @@ function ModalComponent({ open, handleClose, style }) {
                     style={{ width: '50%', display: 'block', margin: 'auto' }}
                 />
                 <div id='warningMessage' style={{ color: 'red', fontSize: '15px', display: 'none' }}>
-                    Attention, cette action est irréversible et supprimera tous vos paris.
+                    Attention, cette action est irréversible.
                 </div>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <ButtonComponent text="Annuler" onClick={handleClose} color="#FF6347" />

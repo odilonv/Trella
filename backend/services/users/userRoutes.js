@@ -8,7 +8,7 @@ export const userRouter = express.Router();
 userRouter.post('/signup', createUser);
 userRouter.post('/login', loginUser);
 userRouter.post('/logout', logoutUser);
-userRouter.post('/delete', deleteUser);
+userRouter.delete('/delete', deleteUser);
 userRouter.get('/session', sessionUser);
 userRouter.get('/user/:id', IdUser);
 userRouter.put('/:userId', updateUser);

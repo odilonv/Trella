@@ -1,8 +1,8 @@
 import React from 'react';
-import { CardComponent, ButtonComponent } from '../../components';
+import { CardComponent } from '../../components';
 import HeadBarComponent from '../../components/HeadBar/HeadBarComponent';
 
-function TasksPage() {
+function CardListPage() {
     const cardsData = [
         { id: 1, title: 'Tâche 1', description: 'Description de la tâche 1' },
         { id: 2, title: 'Tâche 2', description: 'Description de la tâche 2' },
@@ -16,7 +16,7 @@ function TasksPage() {
             flexDirection: 'column',
             margin: "15px"
         }}>
-            <HeadBarComponent title={'Tasks'} />
+            <HeadBarComponent title={'Tasks'} setBoard={false} />
             <div
                 className='default-container'
                 style={{
@@ -38,4 +38,4 @@ function TasksPage() {
 
 
 
-export default TasksPage;
+export default CardListPage;

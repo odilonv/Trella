@@ -26,8 +26,8 @@ function Header() {
         checkSession();
     }, [setUser]);
 
-    const handleBoardClick = () => {
-        navigate('/board');
+    const handleBoardsClick = () => {
+        navigate('/boards');
     };
 
     const handleTrellaClick = () => {
@@ -35,7 +35,7 @@ function Header() {
     };
 
     const handleTasksClick = () => {
-        navigate('/tasks');
+        navigate('/cards');
     };
 
     const handleLogoutClick = async () => {
@@ -62,7 +62,7 @@ function Header() {
                 <span onClick={handleTrellaClick} id='logo-header'>Trella</span>
                 <div>
                     <div className="header-link-container">
-                        <span className="header-link" onClick={handleBoardClick}>Board</span>
+                        <span className="header-link" onClick={handleBoardsClick}>Boards</span>
                         <span className="header-link" onClick={handleTasksClick}>Tasks</span>
                     </div>
                     <div className='app-header-buttons'>

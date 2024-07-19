@@ -72,9 +72,11 @@ export const logoutUser = (req, res) => {
 };
 
 export const deleteUser = async (req, res) => {
-    const { userId } = req.params;
+    const { userId, password } = req.body;
+    console.log("BACK ID:", userId);
     try {
-        const success = await UserService.deleteUser(userId);
+        const success = await UserService.deleteUser(userId, password);
+        console.log(success);
         if (success) {
             res.status(200).json({ message: 'User deleted successfully' });
         } else {
