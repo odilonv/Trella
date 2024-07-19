@@ -1,20 +1,24 @@
 // backend/services/boards/boardService.js
 import { v4 as uuidv4 } from 'uuid';
 import DatabaseConnection from '../../models/DatabaseConnection.js';
+import { UserService } from '../users/userService.js'; // Import UserService
 
 export const BoardService = {
     // Créer un board
-    createBoard: async (name, description) => {
+    createBoard: async (name, description, user_id) => {
+        // Vérifie si l'utilisateur existe
+        await UserService.getUserById(user_id);
+
         const newBoard = {
-            id: uuidv4(),
             name,
-            description
+            description,
+            user_id
         };
 
         const connection = await DatabaseConnection.getInstance();
         await connection.query(
-            'INSERT INTO board (id, name, description) VALUES (?, ?, ?)',
-            [newBoard.id, newBoard.name, newBoard.description]
+            'INSERT INTO board (name, description, user_id) VALUES (?, ?, ?)',
+            [newBoard.name, newBoard.description, newBoard.user_id]
         );
 
         return newBoard;
@@ -32,11 +36,14 @@ export const BoardService = {
     },
 
     // Mettre à jour les détails d'un board
-    updateBoard: async (boardId, name, description) => {
+    updateBoard: async (boardId, name, user_id) => {
+        // Vérifie si l'utilisateur existe
+        await UserService.getUserById(user_id);
+
         const connection = await DatabaseConnection.getInstance();
         await connection.query(
-            'UPDATE board SET name = ?, description = ? WHERE id = ?',
-            [name, description, boardId]
+            'UPDATE board SET name = ?, user_id = ? WHERE id = ?',
+            [name, user_id, boardId]
         );
 
         return this.getBoardById(boardId);

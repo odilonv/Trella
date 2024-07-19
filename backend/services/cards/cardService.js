@@ -4,22 +4,41 @@ import DatabaseConnection from '../../models/DatabaseConnection.js';
 
 export const CardService = {
     // Créer une card
-    createCard: async (title, description) => {
+    createCard: async (title, description, board_id, user_id) => {
+        const connection = await DatabaseConnection.getInstance();
+
+        // Vérifier si le board_id existe
+        const [boardRows] = await connection.query(
+            'SELECT * FROM board WHERE id = ?',
+            [board_id]
+        );
+        if (boardRows.length === 0) {
+            return { error: 'Board ID does not exist' };
+        }
+
+        // Vérifier si le user_id existe
+        const [userRows] = await connection.query(
+            'SELECT * FROM user WHERE id = ?',
+            [user_id]
+        );
+        if (userRows.length === 0) {
+            return { error: 'User ID does not exist' };
+        }
+
         const newCard = {
-            id: uuidv4(),
             title,
-            description
+            description,
+            board_id,
+            user_id
         };
 
-        const connection = await DatabaseConnection.getInstance();
         await connection.query(
-            'INSERT INTO card (id, title, description) VALUES (?, ?, ?)',
-            [newCard.id, newCard.title, newCard.description]
+            'INSERT INTO card (title, description, board_id, user_id) VALUES (?, ?, ?, ?)',
+            [newCard.title, newCard.description, newCard.board_id, newCard.user_id]
         );
 
         return newCard;
     },
-
     // Obtenir une card par ID
     getCardById: async (cardId) => {
         const connection = await DatabaseConnection.getInstance();

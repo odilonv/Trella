@@ -1,5 +1,20 @@
 import { UserService } from './userService.js';
 
+export const IdUser = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const user = await UserService.getUserById(id);
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
+    }
+};
+
 export const createUser = async (req, res) => {
     const { firstName, lastName, email, password } = req.body.user;
     try {
@@ -57,9 +72,11 @@ export const logoutUser = (req, res) => {
 };
 
 export const deleteUser = async (req, res) => {
-    const { userId } = req.params;
+    const { userId, password } = req.body;
+    console.log("BACK ID:", userId);
     try {
-        const success = await UserService.deleteUser(userId);
+        const success = await UserService.deleteUser(userId, password);
+        console.log(success);
         if (success) {
             res.status(200).json({ message: 'User deleted successfully' });
         } else {
