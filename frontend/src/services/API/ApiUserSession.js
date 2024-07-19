@@ -134,28 +134,6 @@ async function changePassword(oldPassword, newPassword, confirmPassword) {
     return response;
 }
 
-async function resetPassword(token, newPassword, confirmPassword) {
-    try {
-        const response = await fetch('http://localhost:5001/api/data/session/resetPassword', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ token, newPassword, confirmPassword })
-        });
-
-        if (response.ok) {
-            return await response.json();
-        } else {
-            const errorResponse = await response.json();
-            throw new Error(errorResponse.error);
-        }
-    } catch (error) {
-        console.error('Erreur lors de la réinitialisation du mot de passe :', error);
-        throw new Error('Erreur lors de la réinitialisation du mot de passe : ' + error.message);
-    }
-}
-
 export {
     login,
     signUp as register,
@@ -165,6 +143,5 @@ export {
     getLoggedUser,
     updateUser,
     deleteUser,
-    changePassword,
-    resetPassword
+    changePassword
 };

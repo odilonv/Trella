@@ -61,10 +61,18 @@ function Header() {
             <nav className='app-header'>
                 <span onClick={handleTrellaClick} id='logo-header'>Trella</span>
                 <div>
-                    <div className="header-link-container">
-                        <span className="header-link" onClick={handleBoardsClick}>Boards</span>
-                        <span className="header-link" onClick={handleCardsClick}>Cards</span>
-                    </div>
+
+
+                    {
+                        user && (
+                            <div className="header-link-container">
+                                <span className="header-link" onClick={handleBoardsClick}>Boards</span>
+                                <span className="header-link" onClick={handleCardsClick}>Cards</span>
+                            </div>
+
+                        )
+                    }
+
                     <div className='app-header-buttons'>
                         {user ? (
                             <>

@@ -3,8 +3,6 @@ import './assets/css/App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { FooterComponent, HeaderComponent } from './components';
 import {
-  ChangePasswordPage,
-  ForgotPasswordPage,
   HomePage,
   LoginPage,
   NotFoundPage,
@@ -40,8 +38,6 @@ function App() {
             <Route path="/signUp" element={<SignUpPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/user" element={<UserPage />} />
-            <Route path="/forgotPassword" element={<ForgotPasswordPage />} />
-            <Route path="/changePassword" element={<ChangePasswordPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </NotificationProvider>
