@@ -4,6 +4,8 @@ import HeadBarComponent from '../../components/Head/HeadBarComponent';
 import { ApiCards } from '../../services/API/ApiCards';
 import { requireLoggedUser, getLoggedUser } from '../../services/API/ApiUserSession';
 import { ApiBoards } from '../../services/API/ApiBoards';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 function CardListPage() {
     const [cardsData, setCardsData] = React.useState([]);
@@ -93,7 +95,7 @@ function CardListPage() {
                                     cursor: 'pointer',
                                     fontSize: '18px'
                                 }}>
-                                    {openBoards.has(board.id) ? '▲' : '▼'}
+                                    {openBoards.has(board.id) ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
                                 </button>
                             </div>
                             {openBoards.has(board.id) && (
