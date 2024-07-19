@@ -20,7 +20,7 @@ export const ApiCards = {
         return await response.json();
     },
 
-    updateCard: async (cardId, title, description, boardId) => {
+    updateCard: async (cardId, title, description, boardId, state) => {
         const user = await getLoggedUser();
         const user_id = user ? user.id : null;
         const response = await fetch(`${API_URL}/${cardId}`, {
@@ -28,7 +28,7 @@ export const ApiCards = {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ title, description, boardId, user_id })
+            body: JSON.stringify({ title, description, boardId, user_id, state })
         });
         return response.json();
     },

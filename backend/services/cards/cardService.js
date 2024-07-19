@@ -34,14 +34,19 @@ export const CardService = {
         return newCard;
     },
 
-    updateCard: async (cardId, title, description, state) => {
+    updateCard: async (cardId, title, description, boardId, state) => {
         const connection = await DatabaseConnection.getInstance();
         await connection.query(
             'UPDATE card SET title = ?, description = ?, state = ? WHERE id = ?',
-            [title, description, state, cardId]
+            [title, description, state, boardId, cardId]
         );
 
-        return this.getCardById(cardId);
+        console.log("cardId :", cardId);
+        console.log("state :", state);
+
+        card = { title: title, description: description, state: state, id: cardId, boardId: boardId }
+        console.log("card :", card);
+        return card;
     },
 
     getCardByUserId: async (userId) => {

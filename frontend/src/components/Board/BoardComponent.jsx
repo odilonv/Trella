@@ -1,7 +1,8 @@
 import React from 'react';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 import CardComponent from '../Card/CardComponent';
 
-function BoardComponent({ titleText, colorTitleText, subText, colorSubText, cards }) {
+function BoardComponent({ titleText, colorTitleText, subText, colorSubText, cards, provided }) {
     return (
         <div
             className='default-container'
@@ -29,18 +30,44 @@ function BoardComponent({ titleText, colorTitleText, subText, colorSubText, card
                     color: colorSubText ?? 'var(--black)'
                 }}>{subText}</h5>
             }
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                margin: '15px 0',
-                gap: '10px'
-
-            }}>
-                {cards.map((card, index) => (
-                    <CardComponent key={index} card={card} />
-                ))}
-            </div>
-
+            <Droppable droppableId={titleText}>
+                {(provided) => (
+                    <div
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            margin: '15px 0',
+                            gap: '10px'
+                        }}
+                    >
+                        {cards.map((card, index) => (
+                            <Draggable key={card.id} draggableId={card.id.toString()} index={index}>
+                                {(provided) => (
+                                    <div
+                                        ref={provided.innerRef}
+                                        {...provided.draggableProps}
+                                        {...provided.dragHandleProps}
+                                        style={{
+                                            userSelect: 'none',
+                                            padding: '16px',
+                                            margin: '0 0 8px 0',
+                                            minHeight: '50px',
+                                            backgroundColor: '#fff',
+                                            color: '#333',
+                                            ...provided.draggableProps.style
+                                        }}
+                                    >
+                                        <CardComponent key={index} card={card} />
+                                    </div>
+                                )}
+                            </Draggable>
+                        ))}
+                        {provided.placeholder}
+                    </div>
+                )}
+            </Droppable>
         </div >
     );
 }

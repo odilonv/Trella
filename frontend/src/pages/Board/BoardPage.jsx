@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
 import { BoardComponent, HeadBarComponent } from '../../components';
 import { ApiBoards } from '../../services/API/ApiBoards';
+import { ApiCards } from '../../services/API/ApiCards';
 import { requireLoggedUser } from '../../services/API/ApiUserSession';
+
+const stateNames = {
+    1: 'To Do',
+    2: 'Work In Progress',
+    3: 'In Testing',
+    4: 'Done'
+};
 
 function BoardPage() {
     const [board, setBoard] = useState({});
@@ -39,6 +48,27 @@ function BoardPage() {
         fetchCards();
     }, []);
 
+    const onDragEnd = async (result) => {
+        const { source, destination } = result;
+
+        // Dropped outside the list
+        if (!destination) return;
+
+        const sourceState = parseInt(source.droppableId);
+        const destinationState = parseInt(destination.droppableId);
+
+        if (sourceState === destinationState && source.index === destination.index) return;
+
+        const movedCard = cards.find(card => card.id === parseInt(result.draggableId));
+        const updatedCard = { ...movedCard, state: destinationState };
+
+        // Update card state on server
+        await ApiCards.updateCard(updatedCard.id, updatedCard.title, updatedCard.description, board.id, updatedCard.state);
+
+        // Update card state in local state
+        setCards(cards.map(card => card.id === updatedCard.id ? updatedCard : card));
+    };
+
     return (
         isLoading ? <div>Loading...</div> :
             <div>
@@ -55,18 +85,23 @@ function BoardPage() {
                         titleSecondtButton={'Add Card'}
                     />
 
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        width: '100%',
-                        gap: '15px',
-                    }}>
-                        <BoardComponent titleText={'To Do'} cards={cards.filter(card => card.state === 1)} />
-                        <BoardComponent titleText={'Work In Progress'} cards={cards.filter(card => card.state === 2)} />
-                        <BoardComponent titleText={'In Testing'} cards={cards.filter(card => card.state === 3)} />
-                        <BoardComponent titleText={'Done'} cards={cards.filter(card => card.state === 4)} />
-                    </div>
+                    <DragDropContext onDragEnd={onDragEnd}>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            width: '100%',
+                            gap: '15px',
+                        }}>
+                            {Object.keys(stateNames).map(state => (
+                                <BoardComponent
+                                    key={state}
+                                    titleText={stateNames[state]}
+                                    cards={cards.filter(card => card.state === parseInt(state))}
+                                />
+                            ))}
+                        </div>
+                    </DragDropContext>
                 </div>
             </div>
     );
