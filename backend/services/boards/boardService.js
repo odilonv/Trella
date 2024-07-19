@@ -5,19 +5,20 @@ import { UserService } from '../users/userService.js'; // Import UserService
 
 export const BoardService = {
     // Créer un board
-    createBoard: async (name, user_id) => {
+    createBoard: async (name, description, user_id) => {
         // Vérifie si l'utilisateur existe
         await UserService.getUserById(user_id);
 
         const newBoard = {
             name,
+            description,
             user_id
         };
 
         const connection = await DatabaseConnection.getInstance();
         await connection.query(
-            'INSERT INTO board (name, user_id) VALUES (?, ?)',
-            [newBoard.name, newBoard.user_id]
+            'INSERT INTO board (name, description, user_id) VALUES (?, ?, ?)',
+            [newBoard.name, newBoard.description, newBoard.user_id]
         );
 
         return newBoard;
