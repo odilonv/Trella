@@ -23,7 +23,7 @@ function UserPage() {
                     const loggedUser = await getLoggedUser();
                     setUser(loggedUser);
                 } catch (error) {
-                    console.error('Erreur lors de la récupération du user :', error);
+                    //console.error('Erreur lors de la récupération du user :', error);
                 }
             }
         };

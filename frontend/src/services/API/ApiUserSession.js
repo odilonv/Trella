@@ -107,18 +107,19 @@ async function updateUser(user) {
     }
 }
 
-async function deleteUser(password) {
+async function deleteUser(userId, password) {
     const response = await fetch('http://localhost:5001/users/delete', {
-        method: 'POST',
+        method: 'DELETE',
         credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ userId, password }), 
     });
 
     return response;
 }
+
 
 async function changePassword(oldPassword, newPassword, confirmPassword) {
     const response = await fetch('http://localhost:5001/api/data/session/changePassword', {
