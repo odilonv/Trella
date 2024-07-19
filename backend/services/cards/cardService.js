@@ -3,7 +3,7 @@ import { BoardService } from '../boards/boardService.js';
 import { UserService } from '../users/userService.js';
 
 export const CardService = {
-    createCard: async (title, description, board_id, user_id, state) => {
+    createCard: async (title, description, board_id, user_id, state = 1) => {
         const connection = await DatabaseConnection.getInstance();
         const board = await BoardService.getBoardById(board_id);
         if (!board) {
