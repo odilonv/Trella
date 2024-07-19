@@ -39,7 +39,8 @@ function BoardComponent({ titleText, colorTitleText, subText, colorSubText, card
                             display: 'flex',
                             flexDirection: 'column',
                             margin: '15px 0',
-                            gap: '10px'
+                            gap: '10px',
+                            height: '100%',
                         }}
                     >
                         {cards.map((card, index) => (

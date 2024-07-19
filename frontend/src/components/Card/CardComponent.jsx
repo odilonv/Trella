@@ -14,11 +14,16 @@ function CardComponent({ card, colorTitleText, colorSubText, assignCard = false 
                 width: '100%',
                 padding: '15px',
                 backgroundColor: 'var(--light-color)',
+                overflowY: 'auto',
+                overflowX: 'hidden',
+                wordWrap: 'break-word'
             }}>
             <div
                 style={{
                     flexDirection: 'column',
                     display: 'flex',
+                    overflowY: 'auto',
+                    overflowX: 'hidden',
                 }}>
                 <h1 style={{
                     fontSize: '0.9em',
@@ -32,7 +37,9 @@ function CardComponent({ card, colorTitleText, colorSubText, assignCard = false 
                         fontSize: '0.7em',
                         fontWeight: 'initial',
                         textAlign: 'left',
-                        color: colorSubText ?? 'var(--black)'
+                        color: colorSubText ?? 'var(--black)',
+                        overflowY: 'auto',
+                        overflowX: 'hidden',
                     }}>{card.description}</h5>
                 }
             </div>
