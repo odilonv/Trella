@@ -16,13 +16,13 @@ export const createCard = async (req, res) => {
 };
 
 // Obtenir une card par ID
-export const getCardById = (req, res) => {
-    const { cardId } = req.params;
-    const card = CardService.getCardById(cardId);
+export const getCardById = async (req, res) => {
+    const {cardId} = req.params;
+    const card = await CardService.getCardById(cardId);
     if (card) {
         res.json(card);
     } else {
-        res.status(404).json({ message: 'Card not found' });
+        res.status(404).json({message: 'Card not found'});
     }
 };
 

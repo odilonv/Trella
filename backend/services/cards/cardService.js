@@ -28,10 +28,12 @@ export const CardService = {
             user_id
         };
 
-        await connection.query(
+        const [result] = await connection.query(
             'INSERT INTO card (title, description, board_id, user_id) VALUES (?, ?, ?, ?)',
             [newCard.title, newCard.description, newCard.board_id, newCard.user_id]
         );
+
+        newCard.id = result.insertId;
 
         return newCard;
     },
