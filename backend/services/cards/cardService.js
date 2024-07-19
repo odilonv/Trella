@@ -1,6 +1,8 @@
 // backend/services/cards/cardService.js
 import { v4 as uuidv4 } from 'uuid';
 import DatabaseConnection from '../../models/DatabaseConnection.js';
+import { BoardService } from '../boards/boardService.js';
+import { UserService } from '../users/userService.js';
 
 export const CardService = {
     // Créer une card
@@ -8,20 +10,14 @@ export const CardService = {
         const connection = await DatabaseConnection.getInstance();
 
         // Vérifier si le board_id existe
-        const [boardRows] = await connection.query(
-            'SELECT * FROM board WHERE id = ?',
-            [board_id]
-        );
-        if (boardRows.length === 0) {
+        const board = await BoardService.getBoardById(board_id);
+        if (!board) {
             return { error: 'Board ID does not exist' };
         }
 
         // Vérifier si le user_id existe
-        const [userRows] = await connection.query(
-            'SELECT * FROM user WHERE id = ?',
-            [user_id]
-        );
-        if (userRows.length === 0) {
+        const user = await UserService.getUserById(user_id);
+        if (!user) {
             return { error: 'User ID does not exist' };
         }
 

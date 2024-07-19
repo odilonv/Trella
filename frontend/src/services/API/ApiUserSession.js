@@ -43,7 +43,7 @@ async function logout() {
 }
 
 async function isLogged() {
-    const response = await fetch('http://localhost:5001/api/data/session', {
+    const response = await fetch('http://localhost:5001/users/session', {
         method: 'GET',
         credentials: 'include',
     });
@@ -51,14 +51,14 @@ async function isLogged() {
 }
 
 async function getLoggedUser() {
-    const response = await fetch('http://localhost:5001/api/data/session', {
+    const response = await fetch('http://localhost:5001/users/session', {
         method: 'GET',
         credentials: 'include',
     });
 
     if (response.status === 200) {
         const data = await response.json();
-        return data.user;
+        return data;
     } else {
         return null;
     }
