@@ -38,7 +38,7 @@ export const CardService = {
         const connection = await DatabaseConnection.getInstance();
         await connection.query(
             'UPDATE card SET title = ?, description = ?, state = ? WHERE id = ?',
-            [title, description, state, boardId, cardId]
+            [title, description, state, cardId]
         );
 
         console.log("cardId :", cardId);
