@@ -1,6 +1,7 @@
 import React from 'react';
 import ButtonComponent from '../Button/ButtonComponent';
 import DashboardCustomizeRoundedIcon from '@mui/icons-material/DashboardCustomizeRounded';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
 
 function CardComponent({ card, colorTitleText, colorSubText, assignCard = false }) {
     return (
@@ -24,14 +25,24 @@ function CardComponent({ card, colorTitleText, colorSubText, assignCard = false 
                     display: 'flex',
                     overflowY: 'auto',
                     overflowX: 'hidden',
+                    gap: '20px',
                 }}>
-                <h1 style={{
-                    fontSize: '0.9em',
-                    fontWeight: '600',
-                    lineHeight: '110%',
-                    width: '100%',
-                    color: colorTitleText ?? 'var(--black)'
-                }}>{card.title}</h1>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        width: '100%',
+                        alignItems: 'center',
+                    }}>
+                    <h1 style={{
+                        fontSize: '0.9em',
+                        fontWeight: '600',
+                        lineHeight: '110%',
+                        width: '100%',
+                        color: colorTitleText ?? 'var(--black)'
+                    }}>{card.title}</h1>
+                    <EditRoundedIcon style={{ fill: 'var(--black)', cursor: 'pointer', fontSize: '1em' }} />
+                </div>
                 {
                     card.description && <h5 style={{
                         fontSize: '0.7em',
