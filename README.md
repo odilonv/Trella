@@ -2,7 +2,7 @@
 
 ## Version: 1.0.0
 
-Trella is a microservice architecture application designed to function similarly to Trello. It offers project management capabilities where users can create boards, lists, and cards to organize tasks and workflows efficiently.
+Trella is a microservice architecture application designed to function similarly to Trello. It offers project management capabilities where users can create boards, lists, and cards to organize cards and workflows efficiently.
 
 ---
 

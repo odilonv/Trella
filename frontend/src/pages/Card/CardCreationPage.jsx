@@ -5,6 +5,8 @@ import { CreationFormComponent } from '../../components';
 function CardCreationPage() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
+    const [selectedBoards, setSelectedBoards] = useState({});
+
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -14,8 +16,17 @@ function CardCreationPage() {
         navigate('/boards');
     };
 
+
     return (
-        <CreationFormComponent theme={"task"} handleSubmit={handleSubmit} name={name} setName={setName} description={description} setDescription={setDescription} />
+        <CreationFormComponent
+            theme={"card"}
+            handleSubmit={handleSubmit}
+            name={name}
+            setName={setName}
+            description={description}
+            setDescription={setDescription}
+            setSelectedBoards={setSelectedBoards}
+            selectedBoards={selectedBoards} />
     );
 }
 

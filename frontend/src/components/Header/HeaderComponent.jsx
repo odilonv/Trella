@@ -34,7 +34,7 @@ function Header() {
         navigate('/');
     };
 
-    const handleTasksClick = () => {
+    const handleCardsClick = () => {
         navigate('/cards');
     };
 
@@ -63,7 +63,7 @@ function Header() {
                 <div>
                     <div className="header-link-container">
                         <span className="header-link" onClick={handleBoardsClick}>Boards</span>
-                        <span className="header-link" onClick={handleTasksClick}>Tasks</span>
+                        <span className="header-link" onClick={handleCardsClick}>Cards</span>
                     </div>
                     <div className='app-header-buttons'>
                         {user ? (
