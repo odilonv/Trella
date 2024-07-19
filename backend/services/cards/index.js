@@ -3,7 +3,7 @@ import cors from 'cors';
 import { cardRouter } from './cardRoutes.js';
 
 const app = express();
-const PORT = 5003; // Port pour le service cards
+const PORT = 5003; 
 
 app.use(cors({
     origin: 'http://localhost:3000',
@@ -12,10 +12,8 @@ app.use(cors({
 
 app.use(express.json());
 
-// Montage des routes du service cards
 app.use('/cards', cardRouter);
 
-// Point d'entrée pour le service cards
 export const startCardsService = () => {
     app.listen(PORT, () => {
         console.log(`Cards service is running on port ${PORT}`);

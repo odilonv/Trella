@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BoardThumbnailComponent, HeadBarComponent } from '../../components';
-import {ApiBoards as BoardAPI} from "../../services/API/ApiBoards";
-import {getLoggedUser, requireLoggedUser} from "../../services/API/ApiUserSession";
+import { ApiBoards as BoardAPI } from "../../services/API/ApiBoards";
+import { getLoggedUser, requireLoggedUser } from "../../services/API/ApiUserSession";
 
 function BoardListPage() {
     const [boards, setBoards] = useState([]);
@@ -11,7 +11,7 @@ function BoardListPage() {
         const fetchBoards = async () => {
             await requireLoggedUser();
             const user = await getLoggedUser();
-            if(!user) return console.error("User not logged in");
+            if (!user) return console.error("User not logged in");
             const userId = user.id;
             const fetchedBoards = await BoardAPI.getBoardsByUserId(userId);
             setBoards(Array.isArray(fetchedBoards) ? fetchedBoards : [fetchedBoards]);
@@ -34,7 +34,7 @@ function BoardListPage() {
                 flexDirection: 'column',
                 margin: "15px"
             }}>
-            <HeadBarComponent title={'Boards'} setCard={false}/>
+            <HeadBarComponent title={'Boards'} setCard={false} />
 
             <div style={{
                 display: 'flex',
@@ -43,7 +43,8 @@ function BoardListPage() {
                 width: '100%',
             }}>
                 {boards.map((board, index) => (
-                    <BoardThumbnailComponent key={index} board={board}/>
+                    console.log(board),
+                    <BoardThumbnailComponent key={index} board={board} />
                 ))}
             </div>
         </div>

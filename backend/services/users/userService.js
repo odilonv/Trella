@@ -3,7 +3,6 @@ import bcrypt from 'bcrypt';
 import User from '../../models/User.js';
 
 export const UserService = {
-    // Créer un utilisateur
     createUser: async (firstName, lastName, email, password) => {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
@@ -21,14 +20,12 @@ export const UserService = {
             [newUser.firstName, newUser.lastName, newUser.email, newUser.password]
         );
 
-        // Récupérer l'ID généré automatiquement par MySQL
         const [rows] = await connection.query('SELECT LAST_INSERT_ID() as id');
         newUser.id = rows[0].id;
 
         return newUser;
     },
 
-    // Authentifier un utilisateur
     loginUser: async (email, password) => {
         const connection = await DatabaseConnection.getInstance();
         const [results] = await connection.query('SELECT * FROM user WHERE email = ?', [email]);
@@ -43,7 +40,6 @@ export const UserService = {
         return null;
     },
 
-    // Supprimer un utilisateur
     deleteUser: async (userId) => {
         const connection = await DatabaseConnection.getInstance();
         const [result] = await connection.query('DELETE FROM user WHERE id = ?', [userId]);
@@ -59,5 +55,4 @@ export const UserService = {
         }
         return null;
     }
-
 };

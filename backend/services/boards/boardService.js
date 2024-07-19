@@ -1,12 +1,7 @@
-// backend/services/boards/boardService.js
-import { v4 as uuidv4 } from 'uuid';
 import DatabaseConnection from '../../models/DatabaseConnection.js';
-import { UserService } from '../users/userService.js'; // Import UserService
-
+import { UserService } from '../users/userService.js'; 
 export const BoardService = {
-    // Créer un board
     createBoard: async (name, description, user_id) => {
-        // Vérifie si l'utilisateur existe
         const user = await UserService.getUserById(user_id);
         if (!user) {
             return { error: 'User ID does not exist' };
@@ -37,7 +32,6 @@ export const BoardService = {
         return rows;
     },
 
-    // Obtenir un board par ID
     getBoardById: async (boardId) => {
         const connection = await DatabaseConnection.getInstance();
         const [rows] = await connection.query(
@@ -48,9 +42,7 @@ export const BoardService = {
         return rows[0];
     },
 
-    // Mettre à jour les détails d'un board
     updateBoard: async (boardId, name, user_id) => {
-        // Vérifie si l'utilisateur existe
         await UserService.getUserById(user_id);
 
         const connection = await DatabaseConnection.getInstance();
@@ -62,7 +54,13 @@ export const BoardService = {
         return this.getBoardById(boardId);
     },
 
-    getCardsByBoardId: (boardId) => {
-        return cards.filter(card => card.boardId === boardId);
+    getCardsByBoardId: async (boardId) => {
+        const connection = await DatabaseConnection.getInstance();
+        const [rows] = await connection.query(
+            'SELECT * FROM card WHERE board_id = ?',
+            [boardId]
+        );
+
+        return rows;
     }
 };

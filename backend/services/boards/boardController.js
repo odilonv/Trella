@@ -1,7 +1,5 @@
-// backend/services/boards/boardController.js
 import {BoardService} from './boardService.js';
 
-// Créer un board
 export const createBoard = async (req, res) => {
     const {name, description, user_id} = req.body;
     try {
@@ -13,7 +11,6 @@ export const createBoard = async (req, res) => {
 };
 
 
-// Obtenir les boards par ID d'utilisateur
 export const getBoardsByUserId = async (req, res) => {
     const {userId} = req.params;
     try {
@@ -24,7 +21,6 @@ export const getBoardsByUserId = async (req, res) => {
     }
 };
 
-// Obtenir un board par ID
 export const getBoardById = async (req, res) => {
     const {boardId} = req.params;
     try {
@@ -35,7 +31,6 @@ export const getBoardById = async (req, res) => {
     }
 };
 
-// Mettre à jour les détails d'un board
 export const updateBoard = async (req, res) => {
     const {boardId} = req.params;
     const {name, user_id} = req.body;

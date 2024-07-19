@@ -1,5 +1,3 @@
-// backend/services/cards/cardController.js
-import { v4 as uuidv4 } from 'uuid';
 import { CardService } from './cardService.js';
 
 export const createCard = async (req, res) => {
@@ -7,15 +5,12 @@ export const createCard = async (req, res) => {
     const result = await CardService.createCard(title, description, board_id, user_id);
 
     if (result.error) {
-        // Si une erreur est présente, renvoyez un statut 400 avec le message d'erreur
         res.status(400).json({ error: result.error });
     } else {
-        // Sinon, renvoyez un statut 201 avec la nouvelle carte
         res.status(201).json(result);
     }
 };
 
-// Obtenir une card par ID
 export const getCardById = async (req, res) => {
     const {cardId} = req.params;
     const card = await CardService.getCardById(cardId);
@@ -26,11 +21,10 @@ export const getCardById = async (req, res) => {
     }
 };
 
-// Mettre à jour les détails d'une card
 export const updateCard = (req, res) => {
     const { cardId } = req.params;
-    const { title, description } = req.body;
-    const updatedCard = CardService.updateCard(cardId, title, description);
+    const { title, description, state } = req.body;
+    const updatedCard = CardService.updateCard(cardId, title, description, state);
     if (updatedCard) {
         res.json(updatedCard);
     } else {
