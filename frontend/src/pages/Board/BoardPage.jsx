@@ -59,6 +59,7 @@ function BoardPage() {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
+                        width: '100%',
                         gap: '15px',
                     }}>
                         <BoardComponent titleText={'To Do'} cards={cards.filter(card => card.state === 1)} />
