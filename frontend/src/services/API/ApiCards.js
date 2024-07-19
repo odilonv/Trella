@@ -20,11 +20,6 @@ export const ApiCards = {
         return await response.json();
     },
 
-    getCardById: async (cardId) => {
-        const response = await fetch(`${API_URL}/${cardId}`);
-        return response.json();
-    },
-
     updateCard: async (cardId, title, description, boardId) => {
         const user = await getLoggedUser();
         const user_id = user ? user.id : null;
@@ -37,4 +32,9 @@ export const ApiCards = {
         });
         return response.json();
     },
+
+    getCardsByUserId: async (userId) => {
+        const response = await fetch(`${API_URL}/${userId}`);
+        return await response.json();
+    }
 };

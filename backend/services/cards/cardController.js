@@ -11,16 +11,6 @@ export const createCard = async (req, res) => {
     }
 };
 
-export const getCardById = async (req, res) => {
-    const {cardId} = req.params;
-    const card = await CardService.getCardById(cardId);
-    if (card) {
-        res.json(card);
-    } else {
-        res.status(404).json({message: 'Card not found'});
-    }
-};
-
 export const updateCard = (req, res) => {
     const { cardId } = req.params;
     const { title, description, state } = req.body;
@@ -31,3 +21,9 @@ export const updateCard = (req, res) => {
         res.status(404).json({ message: 'Card not found' });
     }
 };
+
+export const getCardByUserId = async (req, res) => {
+    const { userId } = req.params;
+    const cards = await CardService.getCardByUserId(userId);
+    res.json(cards);
+}

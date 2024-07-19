@@ -1,8 +1,8 @@
 import express from 'express';
-import { createCard, getCardById, updateCard } from './cardController.js';
+import { createCard, getCardByUserId, updateCard } from './cardController.js';
 
 export const cardRouter = express.Router();
 
 cardRouter.post('/', createCard);
-cardRouter.get('/:cardId', getCardById);
+cardRouter.get('/:userId', getCardByUserId);
 cardRouter.put('/:cardId', updateCard);

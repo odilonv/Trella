@@ -34,16 +34,6 @@ export const CardService = {
         return newCard;
     },
 
-    getCardById: async (cardId) => {
-        const connection = await DatabaseConnection.getInstance();
-        const [rows] = await connection.query(
-            'SELECT * FROM card WHERE id = ?',
-            [cardId]
-        );
-
-        return rows[0];
-    },
-
     updateCard: async (cardId, title, description, state) => {
         const connection = await DatabaseConnection.getInstance();
         await connection.query(
@@ -52,5 +42,15 @@ export const CardService = {
         );
 
         return this.getCardById(cardId);
-    }
+    },
+
+    getCardByUserId: async (userId) => {
+        const connection = await DatabaseConnection.getInstance();
+        const [rows] = await connection.query(
+            'SELECT * FROM card WHERE user_id = ?',
+            [userId]
+        );
+
+        return rows;
+    },
 };

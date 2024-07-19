@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BoardComponent, HeadBarComponent } from '../../components';
 import { ApiBoards } from '../../services/API/ApiBoards';
+import { requireLoggedUser } from '../../services/API/ApiUserSession';
 
 function BoardPage() {
     const [board, setBoard] = useState({});
@@ -9,8 +10,9 @@ function BoardPage() {
 
     useEffect(() => {
         const fetchBoard = async () => {
+            await requireLoggedUser();
             try {
-                const boardId = 1; // Remplacez par l'ID du tableau
+                const boardId = window.location.pathname.split('/').pop();
                 const boardData = await ApiBoards.getBoardById(boardId);
                 setBoard(boardData);
                 setIsLoading(false);
