@@ -12,8 +12,6 @@ export const createCard = async (req, res) => {
 };
 
 export const updateCard = (req, res) => {
-    console.log("updateCard");
-    console.log(req.body);
     const { cardId } = req.params;
     const { title, description, state, boardId } = req.body;
     const updatedCard = CardService.updateCard(cardId, title, description, boardId, state);

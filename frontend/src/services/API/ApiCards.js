@@ -21,7 +21,6 @@ export const ApiCards = {
     },
 
     updateCard: async (cardId, title, description, boardId, state) => {
-        console.log("state", state);
         const user = await getLoggedUser();
         const user_id = user ? user.id : null;
         const response = await fetch(`${API_URL}/${cardId}`, {
