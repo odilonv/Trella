@@ -23,7 +23,7 @@ function CardCreationPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await ApiCards.createCard(name, description, boardId);
-        navigate('/boards');
+        navigate('/boards/' + boardId);
     };
 
     return (
