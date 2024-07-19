@@ -1,8 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ButtonComponent from '../Button/ButtonComponent';
 import DashboardCustomizeRoundedIcon from '@mui/icons-material/DashboardCustomizeRounded';
+import EditIcon from '@mui/icons-material/Edit';
+import { ApiCards } from '../../services/API/ApiCards';
 
 function CardComponent({ card, colorTitleText, colorSubText, assignCard = false }) {
+    // État pour savoir si nous sommes en mode édition
+    const [isEditing, setIsEditing] = useState(false);
+    const [title, setTitle] = useState(card.title);
+    const [description, setDescription] = useState(card.description || '');
+
+    // Fonction pour basculer le mode édition
+    const handleEditClick = () => {
+        setIsEditing(!isEditing);
+    };
+
+    // Fonction pour gérer les changements dans les champs de texte
+    const handleTitleChange = (event) => {
+        setTitle(event.target.value);
+    };
+
+    const handleDescriptionChange = (event) => {
+        setDescription(event.target.value);
+    };
+
+    // Fonction pour sauvegarder les modifications
+    const handleSave = () => {
+        // Logique pour sauvegarder les modifications, par exemple appeler une API ou mettre à jour le parent
+        setIsEditing(false);
+        ApiCards.updateCard(card.id, title, description, card.board_id, card.state);
+    };
+
     return (
         <div
             className='default-container'
@@ -16,7 +44,8 @@ function CardComponent({ card, colorTitleText, colorSubText, assignCard = false 
                 backgroundColor: 'var(--light-color)',
                 overflowY: 'auto',
                 overflowX: 'hidden',
-                wordWrap: 'break-word'
+                wordWrap: 'break-word',
+                position: 'relative' // Ajouté pour positionner le bouton d'édition
             }}>
             <div
                 style={{
@@ -25,27 +54,101 @@ function CardComponent({ card, colorTitleText, colorSubText, assignCard = false 
                     overflowY: 'auto',
                     overflowX: 'hidden',
                 }}>
-                <h1 style={{
-                    fontSize: '0.9em',
-                    fontWeight: '600',
-                    lineHeight: '110%',
-                    width: '100%',
-                    color: colorTitleText ?? 'var(--black)'
-                }}>{card.title}</h1>
-                {
-                    card.description && <h5 style={{
-                        fontSize: '0.7em',
-                        fontWeight: 'initial',
-                        textAlign: 'left',
-                        color: colorSubText ?? 'var(--black)',
-                        overflowY: 'auto',
-                        overflowX: 'hidden',
-                    }}>{card.description}</h5>
-                }
+                <div style={{ position: 'relative' }}>
+                    {isEditing ? (
+                        <input
+                            type="text"
+                            value={title}
+                            onChange={handleTitleChange}
+                            style={{
+                                fontSize: '0.9em',
+                                fontWeight: '600',
+                                lineHeight: '110%',
+                                width: '100%',
+                                color: colorTitleText ?? 'var(--black)',
+                                border: 'none',
+                                background: 'transparent',
+                                outline: 'none'
+                            }}
+                        />
+                    ) : (
+                        <h1 style={{
+                            fontSize: '0.9em',
+                            fontWeight: '600',
+                            lineHeight: '110%',
+                            width: '100%',
+                            color: colorTitleText ?? 'var(--black)'
+                        }}>{title}</h1>
+                    )}
+
+                    {isEditing ? (
+                        <textarea
+                            value={description}
+                            onChange={handleDescriptionChange}
+                            style={{
+                                fontSize: '0.7em',
+                                fontWeight: 'initial',
+                                textAlign: 'left',
+                                color: colorSubText ?? 'var(--black)',
+                                border: 'none',
+                                background: 'transparent',
+                                outline: 'none',
+                                resize: 'none',
+                                width: '100%',
+                                minHeight: '2em'
+                            }}
+                        />
+                    ) : (
+                        card.description && <h5 style={{
+                            fontSize: '0.7em',
+                            fontWeight: 'initial',
+                            textAlign: 'left',
+                            color: colorSubText ?? 'var(--black)',
+                            overflowY: 'auto',
+                            overflowX: 'hidden',
+                        }}>{description}</h5>
+                    )}
+                </div>
             </div>
-            {
-                assignCard && <ButtonComponent text={'Assign to'} endIcon={<DashboardCustomizeRoundedIcon style={{ fill: 'white' }} />} />
-            }
+
+            {assignCard && (
+                <ButtonComponent text={'Assign to'} endIcon={<DashboardCustomizeRoundedIcon style={{ fill: 'white' }} />} />
+            )}
+
+            {/* Bouton d'édition */}
+            <button
+                onClick={handleEditClick}
+                style={{
+                    position: 'absolute',
+                    top: '15px',
+                    right: '15px',
+                    border: 'none',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                    color: 'var(--black)',
+                    fontSize: '1.2em'
+                }}
+            >
+                <EditIcon />
+            </button>
+
+            {isEditing && (
+                <button
+                    onClick={handleSave}
+                    style={{
+                        position: 'absolute',
+                        bottom: '15px',
+                        right: '15px',
+                        border: 'none',
+                        background: 'transparent',
+                        cursor: 'pointer',
+                        color: 'var(--black)',
+                        fontSize: '1em'
+                    }}
+                >
+                    Save
+                </button>
+            )}
         </div>
     );
 }
