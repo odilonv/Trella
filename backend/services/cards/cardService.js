@@ -5,7 +5,6 @@ import { UserService } from '../users/userService.js';
 export const CardService = {
     createCard: async (title, description, board_id, user_id, state) => {
         const connection = await DatabaseConnection.getInstance();
-
         const board = await BoardService.getBoardById(board_id);
         if (!board) {
             return { error: 'Board ID does not exist' };

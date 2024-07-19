@@ -17,6 +17,7 @@ export const ApiCards = {
             },
             body: JSON.stringify({ title, description, board_id, user_id })
         });
+        console.log({ title, description, board_id, user_id })
         return await response.json();
     },
 
